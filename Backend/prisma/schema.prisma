@@ -8,18 +8,45 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  Int?
+model Provider {
+  id              Int       @id @default(autoincrement())
+  name            String
+  email           String    @unique
+  phone           String
+  bio             String?
+  availability    String
+  location        String?
+  cases           Case[]   
+  adminId         Int       // Foreign key to link to the Admin model
+  admin           Admin     @relation(fields: [adminId], references: [id]) // Establish the relationship with Admin
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+model Admin {
+  id               Int         @id @default(autoincrement())
+  name             String
+  email            String      @unique
+  password         String
+  phone            String
+  providers        Provider[]  // Relationship to the Provider model
+}
+
+model Case {
+  id             Int       @id @default(autoincrement())
+  title          String    // Title or short description of the case
+  description    String?   // Detailed description of the case
+  status         CaseStatus // Status of the case (e.g., OPEN, CLOSED, PENDING)
+  startDate      DateTime  // When the case started
+  endDate        DateTime? // When the case ended (optional)
+  providerId     Int       // Foreign key to link to the Provider model
+  provider       Provider  @relation(fields: [providerId], references: [id])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@map("cases")
+}
+
+enum CaseStatus {
+  OPEN
+  CLOSED
+  PENDING
 }
