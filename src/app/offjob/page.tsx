@@ -18,6 +18,7 @@ const quickLinks = [
 export default function OffJob() {
   const [currentDate, setCurrentDate] = useState(new Date());
 
+  // Format Date
   const formatDate = (date: Date) => {
     return date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   };

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@deepgram/sdk": "^3.7.0",
     "@prisma/client": "^5.19.1",
     "@react-google-maps/api": "^2.19.3",
     "lucide-react": "^0.445.0",
