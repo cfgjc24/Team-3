@@ -19,6 +19,7 @@ model Provider {
   cases           Case[]   
   adminId         Int       // Foreign key to link to the Admin model
   admin           Admin     @relation(fields: [adminId], references: [id]) // Establish the relationship with Admin
+  sessionNotes    SessionNote[] // Relationship to the SessionNote model
 }
 
 model Admin {
@@ -39,9 +40,7 @@ model Case {
   endDate        DateTime? // When the case ended (optional)
   providerId     Int       // Foreign key to link to the Provider model
   provider       Provider  @relation(fields: [providerId], references: [id])
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-
+  sessionNotes   SessionNote[] // Relationship to the SessionNote model
   @@map("cases")
 }
 
@@ -49,4 +48,18 @@ enum CaseStatus {
   OPEN
   CLOSED
   PENDING
+}
+
+model SessionNote {
+  id                Int        @id @default(autoincrement())
+  providerId       Int        // Foreign key linking to the Provider model
+  provider         Provider   @relation(fields: [providerId], references: [id])
+  caseId           Int?       // Optional foreign key linking to a Case model
+  case             Case?      @relation(fields: [caseId], references: [id])
+  serviceDate      DateTime   // Date and time of the session
+  appointmentId    String?    // Identifier for the appointment (if applicable)
+  serviceType      String     // Type of service provided (e.g., "ENHANCED PSR")
+  sessionFocus     String     // Focus of the session, including goals and objectives
+  therapeuticIntervention String // Interventions, activities, and client's response
+  plannedIntervention    String  // Progress made and plan for the future
 }
