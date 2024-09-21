@@ -53,11 +53,9 @@ export default function Example() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-
             <button className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
               Log in
             </button>
-          
           </div>
         </nav>
         <Dialog
@@ -99,9 +97,9 @@ export default function Example() {
                   ))}
                 </div>
                 <div className="py-6">
-                      <p className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                        Log in
-                      </p>
+                  <p className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                    Log in
+                  </p>
                 </div>
               </div>
             </div>
