@@ -1,10 +1,11 @@
-'use client'
-import { useState, useEffect } from "react";
+'use client';
+
+import { useState } from "react";
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertCircle, FileText, X, ClipboardList } from "lucide-react";
+import { AlertCircle, FileText, X, ClipboardList, MapPin } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import LocationComponent from "@/components/location";
 
 // Mock function to simulate sending emails
 const sendEmails = (recipients: string[], template: string) => {
@@ -15,16 +16,6 @@ const sendEmails = (recipients: string[], template: string) => {
 
 export default function Home() {
   const [alertSent, setAlertSent] = useState(false);
-  const [location, setLocation] = useState<string | null>(null);
-
-  const handleLocationUpdate = (newLocation: string) => {
-    setLocation(newLocation);
-  };
-
-  const handleRecordMeeting = () => {
-    console.log("Meeting recording started.");
-    window.location.href = "/record";
-  };
 
   const handleEmergencyAlert = async () => {
     const recipients = ["dlm352@cornell.edu", "thediegomarques@gmail.com"];
@@ -32,7 +23,7 @@ export default function Home() {
       Subject: Emergency Alert - Childcare Volunteer Session
       An emergency alert has been triggered during a Childcare Volunteer Session.
       Please respond immediately.
-      Location: ${location || "Unknown Location"}
+      Location: Unknown Location
       This is an automated message. Do not reply.
     `;
     try {
@@ -48,11 +39,6 @@ export default function Home() {
     console.log("Session ended.");
   };
 
-  const handleSignForm = () => {
-    // Navigate to the form page
-    window.location.href = "/form";
-  };
-
   return (
     <div className="flex flex-col min-h-screen p-4 sm:p-6 font-sans bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <main className="flex-grow flex flex-col gap-6 items-center justify-center">
@@ -61,14 +47,21 @@ export default function Home() {
             <CardTitle className="text-2xl font-bold">Provider Toolkit 🛠️</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
-            <LocationComponent onLocationUpdate={handleLocationUpdate} />
-            <Button 
-              onClick={handleRecordMeeting} 
-              className="w-full h-16 text-lg font-semibold"
-              variant="default"
-            >
-              <FileText className="mr-2 h-6 w-6" /> Record Meeting
-            </Button>
+            <Link href="/record" passHref>
+              <Button className="w-full h-16 text-lg font-semibold" variant="default">
+                <FileText className="mr-2 h-6 w-6" /> Record Meeting
+              </Button>
+            </Link>
+            <Link href="/form" passHref>
+              <Button variant="default" className="w-full h-16 text-lg font-semibold">
+                <ClipboardList className="mr-2 h-6 w-6" /> Sign Form
+              </Button>
+            </Link>
+            <Link href="/gps" passHref>
+              <Button variant="default" className="w-full h-16 text-lg font-semibold">
+                <MapPin className="mr-2 h-6 w-6" /> GPS
+              </Button>
+            </Link>
             <Button 
               onClick={handleEmergencyAlert} 
               variant="destructive" 
@@ -77,13 +70,6 @@ export default function Home() {
             >
               <AlertCircle className="mr-2 h-6 w-6" /> Emergency Alert
             </Button>
-            <Button
-              onClick={handleSignForm}
-              variant="secondary"
-              className="w-full h-16 text-lg font-semibold"
-            >
-              <ClipboardList className="mr-2 h-6 w-6" /> Sign Form
-            </Button>
             <Button 
               onClick={handleEndSession} 
               variant="secondary" 
@@ -91,6 +77,7 @@ export default function Home() {
             >
               <X className="mr-2 h-6 w-6" /> End Session
             </Button>
+            
           </CardContent>
         </Card>
         {alertSent && (
