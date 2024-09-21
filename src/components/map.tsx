@@ -3,12 +3,14 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 interface Location {
+  //each induvidual part of the array has this with this data
   name: string;
   longitude: number;
   latitude: number;
 }
 
 interface MapComponentProps {
+  //makes up, contains the zoom amount, along with map style
   styleUrl?: string;
   locations: Location[];
   zoom?: number;
@@ -31,6 +33,12 @@ const MapComponent: React.FC<MapComponentProps> = ({
     const centerLng = -74.0060;    
     const centerLat = 40.712776;
       // Initialize the map
+      // mapInstance.current = new maplibregl.Map({
+      //   container: mapRef.current,
+      //   style: styleUrl,
+      //   center: [centerLng, centerLat], // Center on average location
+      //   zoom,
+
       mapInstance.current = new maplibregl.Map({
         container: mapRef.current,
         style: styleUrl,
@@ -48,7 +56,6 @@ const MapComponent: React.FC<MapComponentProps> = ({
             )
             .addTo(mapInstance.current!);
         });
-
       });
     }
 
