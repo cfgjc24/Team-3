@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   Card,
@@ -16,17 +16,49 @@ import { Button } from "@/components/ui/button";
 const AdminLoginForm = () => {
   const router = useRouter();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  // useState hooks to manage form data
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    router.push("/admin");
+
+    // Make sure email and password are available
+    if (!email || !password) {
+      alert("Please fill in both fields");
+      return;
+    }
+
+    try {
+      const serverResponse = await fetch("http://localhost:4000/sign-in", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email, // Use the state value for email
+          password: password, // Use the state value for password
+          userType: "provider",
+        }),
+      });
+
+      const responseData = await serverResponse.json();
+      console.log(responseData);
+
+      if (responseData) {
+        router.push("/admin");
+      }
+    } catch (error) {
+      console.error("Error signing in:", error);
+    }
   };
 
-  return (
+ return (
     <Card className="w-[400px]">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Lodestar Children's Services</CardTitle>
         <CardDescription className="text-sm">
-          Enter your credentials to access the admin panel.
+          Enter your credentials to access the Provider panel.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -38,6 +70,8 @@ const AdminLoginForm = () => {
                 id="email"
                 placeholder="Enter your email"
                 type="email"
+                value={email} // Link the input to the email state
+                onChange={(e) => setEmail(e.target.value)} // Update state when input changes
                 required
                 className="h-10"
               />
@@ -48,6 +82,8 @@ const AdminLoginForm = () => {
                 id="password"
                 placeholder="Enter your password"
                 type="password"
+                value={password} // Link the input to the password state
+                onChange={(e) => setPassword(e.target.value)} // Update state when input changes
                 required
                 className="h-10"
               />

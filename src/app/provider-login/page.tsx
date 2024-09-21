@@ -38,7 +38,7 @@ const ProviderLoginForm = () => {
         body: JSON.stringify({
           email: email, // Use the state value for email
           password: password, // Use the state value for password
-          userType: "admin",
+          userType: "provider",
         }),
       });
 
