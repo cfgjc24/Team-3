@@ -6,23 +6,17 @@ interface Location {
   name: string;
   longitude: number;
   latitude: number;
-  // Add more properties as needed, e.g., description, image, etc.
 }
 
 interface MapComponentProps {
-  styleUrl?: string; //to get style of map
-  locations: Location[]; //made to refer to interface location
-  zoom?: number; //how much to zoom in - larger number means more zoomed in
+  styleUrl?: string;
+  locations: Location[];
+  zoom?: number;
 }
 
 const MapComponent: React.FC<MapComponentProps> = ({
   styleUrl = "https://api.maptiler.com/maps/basic-v2/style.json?key=***REMOVED***",
-<<<<<<< HEAD
   locations,
-=======
-  longitude,
-  latitude,
->>>>>>> b-end
   zoom = 10,
 }) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
@@ -30,16 +24,18 @@ const MapComponent: React.FC<MapComponentProps> = ({
 
   useEffect(() => {
     if (mapRef.current) {
+      // Dynamically calculate center based on locations
+      const centerLng = locations.reduce((sum, loc) => sum + loc.longitude, 0) / locations.length;
+      const centerLat = locations.reduce((sum, loc) => sum + loc.latitude, 0) / locations.length;
+
       // Initialize the map
       mapInstance.current = new maplibregl.Map({
         container: mapRef.current,
         style: styleUrl,
-        center: [12.55, 55.66],
+        center: [centerLng, centerLat], // Center on average location
         zoom,
       });
 
-<<<<<<< HEAD
-      // Add markers once the map has loaded
       mapInstance.current.on("load", () => {
         locations.forEach((location) => {
           new maplibregl.Marker()
@@ -50,13 +46,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
             )
             .addTo(mapInstance.current!);
         });
-=======
-      // Add the marker after the map has loaded
-      mapInstance.current.on("load", () => {
-        new maplibregl.Marker()
-          .setLngLat([longitude, latitude]) // Set marker at the map's center
-          .addTo(mapInstance.current!); // Add marker to the map
->>>>>>> b-end
+
       });
     }
 
