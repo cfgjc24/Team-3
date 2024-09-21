@@ -14,14 +14,16 @@ export default function Home() {
   useEffect(() => {
     return () => {
       if (deepgramLiveRef.current) {
-        deepgramLiveRef.current.finish();
+        deepgramLiveRef.current.requestClose();
       }
     };
   }, []);
 
   const startRecording = async () => {
     try {
+      console.log('Requesting microphone access...');
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      console.log('Microphone access granted.');
       const mediaRecorder = new MediaRecorder(stream);
       mediaRecorderRef.current = mediaRecorder;
 
@@ -56,18 +58,24 @@ export default function Home() {
 
       mediaRecorder.start(250);
       setIsRecording(true);
+      console.log('Recording started.');
     } catch (error) {
       console.error('Error accessing microphone:', error);
     }
   };
 
   const stopRecording = () => {
-    if (mediaRecorderRef.current) {
-      mediaRecorderRef.current.stop();
-      setIsRecording(false);
-    }
-    if (deepgramLiveRef.current) {
-      deepgramLiveRef.current.finish();
+    try {
+      if (mediaRecorderRef.current) {
+        mediaRecorderRef.current.stop();
+        console.log('Recording stopped.');
+        setIsRecording(false);
+      }
+      if (deepgramLiveRef.current) {
+        deepgramLiveRef.current.requestClose();
+      }
+    } catch (error) {
+      console.error('Error stopping recording:', error);
     }
   };
 
