@@ -146,7 +146,7 @@ export default function Home() {
   };
   const handleLocationUpdate = (location: string) => {
     setLocation(location);
-  }
+  };
 
   return (
     <div className="flex flex-col min-h-screen p-4 sm:p-6 font-sans bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">

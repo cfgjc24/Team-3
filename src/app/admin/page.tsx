@@ -342,7 +342,6 @@ export default function AdminDashboard() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-<<<<<<< HEAD
                     {[...Array(10)].map((_, i) => (
                       <TableRow key={i}>
                         <TableCell>Customer {i + 1}</TableCell>
@@ -351,16 +350,6 @@ export default function AdminDashboard() {
                           ${(Math.random() * 1000).toFixed(2)}
                         </TableCell>
                         <TableCell>{new Date().toLocaleDateString()}</TableCell>
-=======
-                    {[...Array(3)].map((_, i) => (
-                      <TableRow>
-                        <TableCell>John Doe</TableCell>
-
-                        <TableCell>60373029</TableCell>
-                        <TableCell>
-                          ${(Math.random() * 1000).toFixed(2)}
-                        </TableCell>
->>>>>>> ca2607102e465f39f0a6196a337eabfeff9b7a0e
                       </TableRow>
                     ))}
                   </TableBody>
