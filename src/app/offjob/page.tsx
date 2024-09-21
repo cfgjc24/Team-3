@@ -1,29 +1,52 @@
 "use client";
 import { useState } from "react";
-import { Calendar, Users, ShoppingCart, Link } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Calendar, Users, ShoppingCart, Link, Mail, MapPin, Clock } from "lucide-react";
 
-const appointments = [
-  { id: 1, title: "Dentist Appointment", date: "2024-09-21", time: "10:00 AM" },
-  { id: 2, title: "Team Meeting", date: "2024-09-22", time: "2:00 PM" },
-  { id: 3, title: "Grocery Shopping", date: "2024-09-23", time: "11:30 AM" },
+const clients = [
+  { 
+    id: 1, 
+    name: "Alice Johnson", 
+    age: 15, 
+    timeFrame: "10:00 AM - 11:30 AM", 
+    location: "Westside Community Center",
+    email: "alice.j@email.com",
+    notes: "Experiencing anxiety due to academic pressure and social media influence."
+  },
+  { 
+    id: 2, 
+    name: "Bobby Smith", 
+    age: 12, 
+    timeFrame: "1:00 PM - 2:30 PM", 
+    location: "Eastside Youth Center",
+    email: "bobby.s@email.com",
+    notes: "Dealing with bullying issues at school and low self-esteem."
+  },
+//   { 
+//     id: 3, 
+//     name: "Charlie Brown", 
+//     age: 17, 
+//     timeFrame: "3:00 PM - 4:30 PM", 
+//     location: "Downtown Counseling Office",
+//     email: "charlie.b@email.com",
+//     notes: "Struggling with depression and family conflicts."
+//   },
 ];
 
 const quickLinks = [
-  {
-    id: 1,
-    title: "Google Calendar",
-    url: "https://calendar.google.com",
-    icon: Calendar,
-  },
-  { id: 2, title: "Zoom Meetings", url: "https://zoom.us/join", icon: Users },
-  { id: 3, title: "Amazon", url: "https://www.amazon.com", icon: ShoppingCart },
-  { id: 4, title: "LinkedIn", url: "https://www.linkedin.com", icon: Link },
+  { id: 1, title: "Calendar", url: "https://calendar.google.com", icon: Calendar },
+  { id: 2, title: "Team Chat", url: "https://zoom.us/join", icon: Users },
+  { id: 3, title: "Supplies", url: "https://www.amazon.com", icon: ShoppingCart },
+  { id: 4, title: "Resources", url: "https://www.example.com", icon: Link },
 ];
 
-export default function OffJob() {
+export default function Home() {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const router = useRouter();
 
-  // Format Date
   const formatDate = (date: Date) => {
     return date.toLocaleDateString("en-US", {
       weekday: "long",
@@ -33,49 +56,74 @@ export default function OffJob() {
     });
   };
 
+  const handleClientClick = (clientId: number) => {
+    router.push(`/onjobPage?clientId=${clientId}`);
+  };
+
   return (
-    <div className="min-h-screen p-4 bg-gray-100">
-      <header className="mb-6">
-        <h1 className="text-3xl font-bold text-center">
-          {formatDate(currentDate)}
-        </h1>
-      </header>
+    <div className="min-h-screen p-4 bg-gray-100 dark:bg-gray-900">
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-center">
+            {formatDate(currentDate)}
+          </CardTitle>
+        </CardHeader>
+      </Card>
 
-      <main>
-        <section className="mb-6">
-          <h2 className="text-2xl font-semibold mb-4">Appointments</h2>
-          <div className="space-y-4">
-            {appointments.map((appointment) => (
-              <div
-                key={appointment.id}
-                className="bg-white p-4 rounded-lg shadow"
-              >
-                <h3 className="font-semibold">{appointment.title}</h3>
-                <p className="text-sm text-gray-600">
-                  {appointment.date} at {appointment.time}
-                </p>
-              </div>
+      <main className="space-y-6">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-xl font-semibold">Today's Clients</CardTitle>
+          </CardHeader>
+          <CardContent className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {clients.map((client) => (
+              <Card key={client.id} className="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" onClick={() => handleClientClick(client.id)}>
+                <CardContent className="flex flex-col space-y-4 p-4">
+                  <div className="flex items-center space-x-4">
+                    <Avatar>
+                      <AvatarFallback>{client.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="text-sm font-medium leading-none">{client.name}</p>
+                      <p className="text-sm text-muted-foreground">Age: {client.age}</p>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center text-sm">
+                      <Clock className="mr-2 h-4 w-4" />
+                      {client.timeFrame}
+                    </div>
+                    <div className="flex items-center text-sm">
+                      <MapPin className="mr-2 h-4 w-4" />
+                      {client.location}
+                    </div>
+                    <div className="flex items-center text-sm">
+                      <Mail className="mr-2 h-4 w-4" />
+                      {client.email}
+                    </div>
+                    <p className="text-sm text-muted-foreground">{client.notes}</p>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
-          </div>
-        </section>
+          </CardContent>
+        </Card>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Quick Links</h2>
-          <div className="grid grid-cols-2 gap-4">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-xl font-semibold">Quick Links</CardTitle>
+          </CardHeader>
+          <CardContent className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {quickLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white p-4 rounded-lg shadow flex items-center space-x-3 hover:bg-gray-50 transition-colors"
-              >
-                <link.icon className="w-6 h-6 text-blue-500" />
-                <span className="font-medium">{link.title}</span>
-              </a>
+              <Button key={link.id} variant="outline" className="h-auto flex flex-col items-center justify-center p-4 space-y-2" asChild>
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  <link.icon className="w-6 h-6" />
+                  <span className="text-sm font-medium">{link.title}</span>
+                </a>
+              </Button>
             ))}
-          </div>
-        </section>
+          </CardContent>
+        </Card>
       </main>
     </div>
   );
