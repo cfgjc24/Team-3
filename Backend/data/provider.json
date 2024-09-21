@@ -130,7 +130,7 @@
     "adminId": 17,
     "checked-in": "open",
     "locationDetails": {
-      "latitude": 40.931210,
+      "latitude": 40.93121,
       "longitude": -73.898747
     }
   },
@@ -146,7 +146,7 @@
     "checked-in": "closed",
     "locationDetails": {
       "latitude": 41.033986,
-      "longitude": -73.762910
+      "longitude": -73.76291
     }
   },
   {
@@ -191,7 +191,7 @@
     "checked-in": "open",
     "locationDetails": {
       "latitude": 40.663991,
-      "longitude": -74.210700
+      "longitude": -74.2107
     }
   },
   {
@@ -340,7 +340,7 @@
     "adminId": 12,
     "checked-in": "open",
     "locationDetails": {
-      "latitude": 41.076210,
+      "latitude": 41.07621,
       "longitude": -73.858475
     }
   },
@@ -356,7 +356,7 @@
     "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.979997,
-      "longitude": -74.116530
+      "longitude": -74.11653
     }
   },
   {
@@ -370,7 +370,7 @@
     "adminId": 47,
     "checked-in": "open",
     "locationDetails": {
-      "latitude": 40.726770,
+      "latitude": 40.72677,
       "longitude": -73.634295
     }
   },
@@ -505,7 +505,7 @@
     "adminId": 29,
     "checked-in": "closed",
     "locationDetails": {
-      "latitude": 40.783060,
+      "latitude": 40.78306,
       "longitude": -73.971249
     }
   },
@@ -520,7 +520,7 @@
     "adminId": 12,
     "checked-in": "open",
     "locationDetails": {
-      "latitude": 40.767500,
+      "latitude": 40.7675,
       "longitude": -73.833079
     }
   },
@@ -566,7 +566,7 @@
     "checked-in": "closed",
     "locationDetails": {
       "latitude": 41.033986,
-      "longitude": -73.762910
+      "longitude": -73.76291
     }
   },
   {
@@ -580,7 +580,7 @@
     "adminId": 16,
     "checked-in": "open",
     "locationDetails": {
-      "latitude": 40.811550,
+      "latitude": 40.81155,
       "longitude": -73.946477
     }
   },
@@ -595,7 +595,7 @@
     "adminId": 24,
     "checked-in": "closed",
     "locationDetails": {
-      "latitude": 40.783060,
+      "latitude": 40.78306,
       "longitude": -73.971249
     }
   },
@@ -626,7 +626,7 @@
     "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.979997,
-      "longitude": -74.116530
+      "longitude": -74.11653
     }
   },
   {
@@ -700,7 +700,7 @@
     "adminId": 49,
     "checked-in": "open",
     "locationDetails": {
-      "latitude": 40.726770,
+      "latitude": 40.72677,
       "longitude": -73.634295
     }
   },
@@ -730,7 +730,7 @@
     "adminId": 7,
     "checked-in": "open",
     "locationDetails": {
-      "latitude": 40.811550,
+      "latitude": 40.81155,
       "longitude": -73.946477
     }
   },

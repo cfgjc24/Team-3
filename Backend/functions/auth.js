@@ -41,10 +41,4 @@ function attemptSignIn(data) {
   return "failed";
 }
 
-console.log(
-  attemptSignIn({
-    email: "jessicas@gmail.com",
-    password: "&5M2#hpF!K",
-    userType: "admin",
-  }),
-);
+module.exports = attemptSignIn;

@@ -79,7 +79,9 @@ export default function Home() {
       console.log("Recording started.");
     } catch (error) {
       console.error("Error accessing microphone:", error);
-      setError("Error accessing microphone. Please check your permissions and try again.");
+      setError(
+        "Error accessing microphone. Please check your permissions and try again.",
+      );
     }
   };
 
@@ -128,7 +130,7 @@ export default function Home() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${chatgptApiKey}`,
           },
-        }
+        },
       );
 
       const summaryText = response.data.choices[0].message.content.trim();
@@ -136,7 +138,9 @@ export default function Home() {
       setError(null);
     } catch (error) {
       console.error("Error summarizing transcript:", error);
-      setError("Error generating summary. Please check your API key and try again.");
+      setError(
+        "Error generating summary. Please check your API key and try again.",
+      );
     }
   };
 

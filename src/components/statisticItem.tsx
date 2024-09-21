@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 interface StatisticItemProps {
   end: number;
@@ -8,7 +8,13 @@ interface StatisticItemProps {
   icon: React.ReactNode;
 }
 
-const StatisticItem: React.FC<StatisticItemProps> = ({ end, duration, label, prefix = '', icon }) => {
+const StatisticItem: React.FC<StatisticItemProps> = ({
+  end,
+  duration,
+  label,
+  prefix = "",
+  icon,
+}) => {
   const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
@@ -30,13 +36,14 @@ const StatisticItem: React.FC<StatisticItemProps> = ({ end, duration, label, pre
   return (
     <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-6 shadow-lg transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
       <div className="flex flex-col items-center">
-        <div className="text-4xl mb-4 mr-4 text-blue-500">
-          {icon}
-        </div>
+        <div className="text-4xl mb-4 mr-4 text-blue-500">{icon}</div>
         <p className="text-3xl font-bold text-blue-600 mb-2">
-          {prefix}{count.toLocaleString()}+
+          {prefix}
+          {count.toLocaleString()}+
         </p>
-        <p className="text-lg text-purple-600 font-medium text-center">{label}</p>
+        <p className="text-lg text-purple-600 font-medium text-center">
+          {label}
+        </p>
       </div>
     </div>
   );
