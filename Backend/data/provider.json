@@ -6,8 +6,13 @@
     "phone": "685.387.3350",
     "bio": "Magazine federal newspaper rule country. Itself service man effect.",
     "availability": "Weekends",
-    "location": "New Diana",
-    "adminId": 22
+    "location": "New York",
+    "adminId": 22,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.712776,
+      "longitude": -74.005974
+    }
   },
   {
     "id": 2,
@@ -16,8 +21,13 @@
     "phone": "(612)531-1567",
     "bio": "Head direction deep on every fight. Great discussion upon say great difficult manager.",
     "availability": "24/7",
-    "location": "Davidborough",
-    "adminId": 1
+    "location": "Brooklyn",
+    "adminId": 1,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.678178,
+      "longitude": -73.944158
+    }
   },
   {
     "id": 3,
@@ -26,8 +36,13 @@
     "phone": "317.651.4444x78266",
     "bio": "With candidate suffer group program bring. Upon certainly they.",
     "availability": "Monday-Friday",
-    "location": "North Robinport",
-    "adminId": 21
+    "location": "Queens",
+    "adminId": 21,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.728224,
+      "longitude": -73.794853
+    }
   },
   {
     "id": 4,
@@ -36,8 +51,13 @@
     "phone": "(299)970-4031x58090",
     "bio": "Region service mouth lose summer ok. Popular remain true dog performance.",
     "availability": "Weekends",
-    "location": "New Jamesborough",
-    "adminId": 21
+    "location": "Bronx",
+    "adminId": 21,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.844782,
+      "longitude": -73.864827
+    }
   },
   {
     "id": 5,
@@ -46,8 +66,13 @@
     "phone": "8175752133",
     "bio": "Down fact other reduce class safe. Southern already us recently including.",
     "availability": "Weekends",
-    "location": "South Lisa",
-    "adminId": 40
+    "location": "Staten Island",
+    "adminId": 40,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.579021,
+      "longitude": -74.151535
+    }
   },
   {
     "id": 6,
@@ -56,8 +81,13 @@
     "phone": "556-879-2062x98293",
     "bio": "Itself assume American impact card. Bit think magazine research.",
     "availability": "Weekends",
-    "location": "Darrylshire",
-    "adminId": 16
+    "location": "Jersey City",
+    "adminId": 16,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.717754,
+      "longitude": -74.043143
+    }
   },
   {
     "id": 7,
@@ -66,8 +96,13 @@
     "phone": "(616)949-6950",
     "bio": "Country these agent west. Role couple lot stock fine statement. Too husband rate family.",
     "availability": "Weekends",
-    "location": "East Bradleyberg",
-    "adminId": 43
+    "location": "Hoboken",
+    "adminId": 43,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.743991,
+      "longitude": -74.032363
+    }
   },
   {
     "id": 8,
@@ -76,8 +111,13 @@
     "phone": "(264)869-1619",
     "bio": "Window next parent budget ground hard together. Western work plant cultural.",
     "availability": "24/7",
-    "location": "New Tannerland",
-    "adminId": 10
+    "location": "Newark",
+    "adminId": 10,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.735657,
+      "longitude": -74.172367
+    }
   },
   {
     "id": 9,
@@ -86,8 +126,13 @@
     "phone": "001-237-501-8030x234",
     "bio": "Everybody research something even box. Dinner picture news several choice program performance.",
     "availability": "Monday-Friday",
-    "location": "Courtneyland",
-    "adminId": 17
+    "location": "Yonkers",
+    "adminId": 17,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.931210,
+      "longitude": -73.898747
+    }
   },
   {
     "id": 10,
@@ -96,8 +141,13 @@
     "phone": "+1-617-483-1627x643",
     "bio": "Bed happen officer rather. View because easy old in.",
     "availability": "Monday-Friday",
-    "location": "West Johnhaven",
-    "adminId": 40
+    "location": "White Plains",
+    "adminId": 40,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 41.033986,
+      "longitude": -73.762910
+    }
   },
   {
     "id": 11,
@@ -106,8 +156,13 @@
     "phone": "432-281-6321",
     "bio": "Think win wind tend speak enjoy. Strong gun write.",
     "availability": "Monday-Friday",
-    "location": "East Richardfurt",
-    "adminId": 19
+    "location": "Hempstead",
+    "adminId": 19,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.706213,
+      "longitude": -73.618739
+    }
   },
   {
     "id": 12,
@@ -116,8 +171,13 @@
     "phone": "+1-675-959-3606x957",
     "bio": "Great yes foreign clearly travel structure.\nKitchen attorney outside live. Culture behind use leg.",
     "availability": "Weekends",
-    "location": "South Edwardport",
-    "adminId": 38
+    "location": "New Rochelle",
+    "adminId": 38,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.911491,
+      "longitude": -73.782354
+    }
   },
   {
     "id": 13,
@@ -126,8 +186,13 @@
     "phone": "389.882.6479x9860",
     "bio": "She left single bank. East who window speak chair peace.",
     "availability": "24/7",
-    "location": "Ericchester",
-    "adminId": 50
+    "location": "Elizabeth",
+    "adminId": 50,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.663991,
+      "longitude": -74.210700
+    }
   },
   {
     "id": 14,
@@ -136,8 +201,13 @@
     "phone": "752-931-3910x098",
     "bio": "Do light by realize paper those. Test tough few family by mouth. Hold board to send class.",
     "availability": "Weekends",
-    "location": "West Danielberg",
-    "adminId": 50
+    "location": "Paterson",
+    "adminId": 50,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.916765,
+      "longitude": -74.171811
+    }
   },
   {
     "id": 15,
@@ -146,8 +216,13 @@
     "phone": "(864)371-3454x040",
     "bio": "Fire summer write owner remember. Person hour task. New leader Democrat commercial deal.",
     "availability": "Monday-Friday",
-    "location": "Floresfort",
-    "adminId": 42
+    "location": "Hackensack",
+    "adminId": 42,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.885932,
+      "longitude": -74.043473
+    }
   },
   {
     "id": 16,
@@ -156,8 +231,13 @@
     "phone": "290-212-4270x13918",
     "bio": "Artist free glass collection stuff. Old peace write represent tree. Score eye system tend.",
     "availability": "Weekends",
-    "location": "Lake Ronald",
-    "adminId": 25
+    "location": "Bayonne",
+    "adminId": 25,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.668714,
+      "longitude": -74.114309
+    }
   },
   {
     "id": 17,
@@ -166,8 +246,13 @@
     "phone": "2385467213",
     "bio": "Top nothing share. Appear choose factor lose because. Old marriage may employee.",
     "availability": "Weekends",
-    "location": "East Edwin",
-    "adminId": 10
+    "location": "Harrison",
+    "adminId": 10,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.911488,
+      "longitude": -73.724684
+    }
   },
   {
     "id": 18,
@@ -176,8 +261,13 @@
     "phone": "5066093380",
     "bio": "Cause important later simply house air. Defense new until change cold major civil ability.",
     "availability": "Monday-Friday",
-    "location": "Brownfurt",
-    "adminId": 6
+    "location": "Union City",
+    "adminId": 6,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.779545,
+      "longitude": -74.023751
+    }
   },
   {
     "id": 19,
@@ -186,8 +276,13 @@
     "phone": "867.939.2206",
     "bio": "Able her serious ball enough which fly believe. Mother try TV military.",
     "availability": "Monday-Friday",
-    "location": "East Jenniferview",
-    "adminId": 18
+    "location": "Passaic",
+    "adminId": 18,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.856766,
+      "longitude": -74.128476
+    }
   },
   {
     "id": 20,
@@ -196,8 +291,13 @@
     "phone": "+1-383-622-9351x1378",
     "bio": "Ball I free try action end. Its offer maybe. Range travel prove factor her walk long.",
     "availability": "Weekends",
-    "location": "New Tina",
-    "adminId": 15
+    "location": "West New York",
+    "adminId": 15,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.787878,
+      "longitude": -74.014306
+    }
   },
   {
     "id": 21,
@@ -206,8 +306,13 @@
     "phone": "001-422-675-8721x344",
     "bio": "Officer cup final. Industry four add.",
     "availability": "24/7",
-    "location": "Port Kennethton",
-    "adminId": 12
+    "location": "Fort Lee",
+    "adminId": 12,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.850933,
+      "longitude": -73.970138
+    }
   },
   {
     "id": 22,
@@ -216,8 +321,13 @@
     "phone": "446-754-3134x014",
     "bio": "Kind may better hair. Onto in peace.",
     "availability": "Weekends",
-    "location": "Hernandezfurt",
-    "adminId": 42
+    "location": "Teaneck",
+    "adminId": 42,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.893168,
+      "longitude": -74.011627
+    }
   },
   {
     "id": 23,
@@ -226,8 +336,13 @@
     "phone": "(337)882-6629",
     "bio": "Onto control blood these our.",
     "availability": "Monday-Friday",
-    "location": "Collinsberg",
-    "adminId": 12
+    "location": "Tarrytown",
+    "adminId": 12,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 41.076210,
+      "longitude": -73.858475
+    }
   },
   {
     "id": 24,
@@ -236,8 +351,13 @@
     "phone": "(218)767-9771",
     "bio": "Identify clearly wear general. Tend blood similar cup end. Eat keep fact.",
     "availability": "24/7",
-    "location": "Saraview",
-    "adminId": 17
+    "location": "Ridgewood",
+    "adminId": 17,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.979997,
+      "longitude": -74.116530
+    }
   },
   {
     "id": 25,
@@ -246,8 +366,13 @@
     "phone": "(924)497-2588x5316",
     "bio": "History example himself seven. Owner administration majority deal daughter job both.",
     "availability": "Weekends",
-    "location": "Destinytown",
-    "adminId": 47
+    "location": "Garden City",
+    "adminId": 47,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.726770,
+      "longitude": -73.634295
+    }
   },
   {
     "id": 26,
@@ -256,8 +381,13 @@
     "phone": "415.660.3922x232",
     "bio": "Race husband various evening. Include or professional population end model method major.",
     "availability": "Weekends",
-    "location": "Lake Jenniferville",
-    "adminId": 6
+    "location": "Scarsdale",
+    "adminId": 6,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 41.005097,
+      "longitude": -73.784576
+    }
   },
   {
     "id": 27,
@@ -266,8 +396,13 @@
     "phone": "+1-842-707-3929x4945",
     "bio": "It example staff free. Far our social lot. Painting admit goal hospital.",
     "availability": "Weekends",
-    "location": "Caitlynside",
-    "adminId": 19
+    "location": "Mount Vernon",
+    "adminId": 19,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.912599,
+      "longitude": -73.837078
+    }
   },
   {
     "id": 28,
@@ -276,8 +411,13 @@
     "phone": "909-985-2498",
     "bio": "Look list indeed walk clearly sense.\nNo by table but. Knowledge too them win.",
     "availability": "24/7",
-    "location": "East Mark",
-    "adminId": 40
+    "location": "Harrison",
+    "adminId": 40,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.911488,
+      "longitude": -73.724684
+    }
   },
   {
     "id": 29,
@@ -286,8 +426,13 @@
     "phone": "352-799-9185",
     "bio": "Near tonight happy late. Cell serious certainly American simple movement Mrs. Seven sound future.",
     "availability": "Weekends",
-    "location": "North Jacob",
-    "adminId": 23
+    "location": "Port Chester",
+    "adminId": 23,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.994828,
+      "longitude": -73.667918
+    }
   },
   {
     "id": 30,
@@ -296,8 +441,13 @@
     "phone": "001-411-933-1422x0285",
     "bio": "Network professional your current practice step.",
     "availability": "24/7",
-    "location": "Lake Jeffrey",
-    "adminId": 15
+    "location": "Clifton",
+    "adminId": 15,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.858433,
+      "longitude": -74.163755
+    }
   },
   {
     "id": 31,
@@ -306,8 +456,13 @@
     "phone": "929.299.9042",
     "bio": "Field plant practice company. Lawyer treat wait work. Recognize throw which and.",
     "availability": "Weekends",
-    "location": "Melindafort",
-    "adminId": 22
+    "location": "New York",
+    "adminId": 22,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.712776,
+      "longitude": -74.005974
+    }
   },
   {
     "id": 32,
@@ -316,8 +471,13 @@
     "phone": "001-297-642-0693x79737",
     "bio": "Director sea short. Green ever allow land. Middle author share paper with picture.",
     "availability": "Weekends",
-    "location": "Sosatown",
-    "adminId": 1
+    "location": "Union City",
+    "adminId": 1,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.779545,
+      "longitude": -74.023751
+    }
   },
   {
     "id": 33,
@@ -326,8 +486,13 @@
     "phone": "001-546-758-6078x851",
     "bio": "Type south attention specific book lawyer. Rate write speak whatever.",
     "availability": "Monday-Friday",
-    "location": "Lake Christina",
-    "adminId": 29
+    "location": "Long Island City",
+    "adminId": 29,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.744679,
+      "longitude": -73.948542
+    }
   },
   {
     "id": 34,
@@ -336,8 +501,13 @@
     "phone": "+1-605-797-7842x13284",
     "bio": "Activity positive trip strategy role heavy before. Safe performance minute civil age.",
     "availability": "Monday-Friday",
-    "location": "Ronaldshire",
-    "adminId": 29
+    "location": "Manhattan",
+    "adminId": 29,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.783060,
+      "longitude": -73.971249
+    }
   },
   {
     "id": 35,
@@ -346,8 +516,13 @@
     "phone": "382-292-1857x525",
     "bio": "Pm treat total could style. New benefit discussion director art small family.",
     "availability": "Weekends",
-    "location": "Mendozafurt",
-    "adminId": 12
+    "location": "Flushing",
+    "adminId": 12,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.767500,
+      "longitude": -73.833079
+    }
   },
   {
     "id": 36,
@@ -356,8 +531,13 @@
     "phone": "232.289.8916x0005",
     "bio": "Join lawyer forget seem hospital.",
     "availability": "Weekends",
-    "location": "Smithville",
-    "adminId": 34
+    "location": "Staten Island",
+    "adminId": 34,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.579021,
+      "longitude": -74.151535
+    }
   },
   {
     "id": 37,
@@ -366,8 +546,13 @@
     "phone": "804.303.7734x221",
     "bio": "Group responsibility sister. Billion not as best standard. Conference actually world lot.",
     "availability": "24/7",
-    "location": "North Andreshire",
-    "adminId": 37
+    "location": "Bronx",
+    "adminId": 37,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.844782,
+      "longitude": -73.864827
+    }
   },
   {
     "id": 38,
@@ -376,8 +561,13 @@
     "phone": "409.327.6863x451",
     "bio": "Player issue room here life camera blood. Wish toward true people car each report.",
     "availability": "Weekends",
-    "location": "North Matthew",
-    "adminId": 3
+    "location": "White Plains",
+    "adminId": 3,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 41.033986,
+      "longitude": -73.762910
+    }
   },
   {
     "id": 39,
@@ -386,8 +576,13 @@
     "phone": "960.264.2325x5925",
     "bio": "See protect cold administration class evening. Onto upon be gas game under around.",
     "availability": "Monday-Friday",
-    "location": "Shahport",
-    "adminId": 16
+    "location": "Harlem",
+    "adminId": 16,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.811550,
+      "longitude": -73.946477
+    }
   },
   {
     "id": 40,
@@ -396,8 +591,13 @@
     "phone": "742.349.3093",
     "bio": "Fund moment write public official defense. Kitchen imagine official size.",
     "availability": "24/7",
-    "location": "Zacharymouth",
-    "adminId": 24
+    "location": "Manhattan",
+    "adminId": 24,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.783060,
+      "longitude": -73.971249
+    }
   },
   {
     "id": 41,
@@ -406,8 +606,13 @@
     "phone": "+1-611-615-2307x6254",
     "bio": "Authority such difficult claim believe food. Not world you sister. Other peace memory want.",
     "availability": "Monday-Friday",
-    "location": "Amandabury",
-    "adminId": 35
+    "location": "Brooklyn",
+    "adminId": 35,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.678178,
+      "longitude": -73.944158
+    }
   },
   {
     "id": 42,
@@ -416,8 +621,13 @@
     "phone": "(873)435-7101x269",
     "bio": "Wide parent finally beat. Address station threat during experience key really. Early over he two.",
     "availability": "Monday-Friday",
-    "location": "Port Sarahmouth",
-    "adminId": 36
+    "location": "Ridgewood",
+    "adminId": 36,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.979997,
+      "longitude": -74.116530
+    }
   },
   {
     "id": 43,
@@ -426,8 +636,13 @@
     "phone": "240.830.1213x227",
     "bio": "Affect not dream camera administration. Theory cut experience table what admit before.",
     "availability": "Weekends",
-    "location": "Mcintyrefurt",
-    "adminId": 44
+    "location": "Riverdale",
+    "adminId": 44,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.891716,
+      "longitude": -73.903213
+    }
   },
   {
     "id": 44,
@@ -436,8 +651,13 @@
     "phone": "923.451.0410x495",
     "bio": "International work risk agency themselves century. Reach natural interest seat.",
     "availability": "24/7",
-    "location": "Port Katherinemouth",
-    "adminId": 31
+    "location": "Hoboken",
+    "adminId": 31,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.743991,
+      "longitude": -74.032363
+    }
   },
   {
     "id": 45,
@@ -446,8 +666,13 @@
     "phone": "879-362-6748x153",
     "bio": "Country window may east strong eat. Turn back chance country.",
     "availability": "Monday-Friday",
-    "location": "Krausebury",
-    "adminId": 39
+    "location": "Brooklyn",
+    "adminId": 39,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.678178,
+      "longitude": -73.944158
+    }
   },
   {
     "id": 46,
@@ -456,8 +681,13 @@
     "phone": "001-361-863-4615x233",
     "bio": "Onto true product street serious. Ten pull election night send. Improve laugh project attorney.",
     "availability": "24/7",
-    "location": "Rosston",
-    "adminId": 5
+    "location": "Jersey City",
+    "adminId": 5,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.717754,
+      "longitude": -74.043143
+    }
   },
   {
     "id": 47,
@@ -466,8 +696,13 @@
     "phone": "217.615.2671x03230",
     "bio": "Analysis compare method nor provide name. Put hair prove together.",
     "availability": "Monday-Friday",
-    "location": "West Adam",
-    "adminId": 49
+    "location": "Garden City",
+    "adminId": 49,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.726770,
+      "longitude": -73.634295
+    }
   },
   {
     "id": 48,
@@ -476,8 +711,13 @@
     "phone": "792.376.0201x6763",
     "bio": "Let marriage since young realize. Force sense collection religious interview.",
     "availability": "Monday-Friday",
-    "location": "Nicholasberg",
-    "adminId": 47
+    "location": "Bayonne",
+    "adminId": 47,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.668714,
+      "longitude": -74.114309
+    }
   },
   {
     "id": 49,
@@ -486,8 +726,13 @@
     "phone": "(290)755-3507",
     "bio": "Music help series adult people each. Race generation peace.",
     "availability": "Monday-Friday",
-    "location": "Christopherport",
-    "adminId": 7
+    "location": "Harlem",
+    "adminId": 7,
+    "checked-in": "open",
+    "locationDetails": {
+      "latitude": 40.811550,
+      "longitude": -73.946477
+    }
   },
   {
     "id": 50,
@@ -496,7 +741,12 @@
     "phone": "236-465-9072x797",
     "bio": "Company another their table value. After production born bad nation unit never.",
     "availability": "Weekends",
-    "location": "Smithtown",
-    "adminId": 29
+    "location": "Newark",
+    "adminId": 29,
+    "checked-in": "closed",
+    "locationDetails": {
+      "latitude": 40.735657,
+      "longitude": -74.172367
+    }
   }
 ]

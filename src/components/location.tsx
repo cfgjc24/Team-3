@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Loader2 } from "lucide-react";
+import MapComponent from "@/components/map";
 
 interface Location {
   latitude: number;
@@ -142,6 +143,7 @@ export default function LocationComponent({
             ) : (
               <AddressDisplay address={address} />
             )}
+            <MapComponent longitude={location.longitude} latitude={location.latitude} zoom={13} />
           </>
         )}
       </CardContent>
