@@ -29,21 +29,21 @@ export default function FormPage() {
                 className="w-full h-16 text-lg font-semibold"
                 variant="default"
               >
-                <FileText className="mr-2 h-6 w-6" /> Form 1
+                <FileText className="mr-2 h-6 w-6" /> Employee Travel Expense Form
               </Button>
               <Button
                 onClick={showForm2}
                 variant="default"
                 className="w-full h-16 text-lg font-semibold"
               >
-                <ClipboardList className="mr-2 h-6 w-6" /> Form 2
+                <ClipboardList className="mr-2 h-6 w-6" /> Provider Log
               </Button>
               <Button 
                 onClick={showForm3} 
                 variant="default" 
                 className="w-full h-16 text-lg font-semibold"
               >
-                <ClipboardList className="mr-2 h-6 w-6" /> Form 2
+                <ClipboardList className="mr-2 h-6 w-6" /> Flex Fund Log
               </Button>
             </CardContent>
           </Card>
