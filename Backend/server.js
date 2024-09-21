@@ -1,10 +1,14 @@
 const express = require("express");
+const {
+  caseData,
+  sessionNoteData,
+  providerData,
+  adminData,
+} = require("./data/data"); // Import the JSON data
 const app = express();
 
-app.use(express.json());
-
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.send(caseData);
 });
 
 // Example route to create a user
