@@ -1,17 +1,46 @@
 "use client";
-
+import { useState } from "react";
 import LocationComponent from "@/components/location";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle, FileText, X } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+
+// Mock function to simulate sending emails
+const sendEmails = (recipients: any[], template: string) => {
+  console.log(`Sending email to ${recipients.join(", ")}`);
+  console.log(`Email content: ${template}`);
+  return Promise.resolve(); // Simulating an async operation
+};
 
 export default function Home() {
+  const [alertSent, setAlertSent] = useState(false);
+
   const handleRecordMeeting = () => {
     console.log("Meeting recording started.");
+    window.location.href = "/record";
   };
 
-  const handleEmergencyAlert = () => {
-    console.log("Emergency alert sent!");
+  const handleEmergencyAlert = async () => {
+    const recipients = ["dlm352@cornell.edu", "thediegomarques@gmail.com"];
+    const emailTemplate = `
+      Subject: Emergency Alert - Childcare Volunteer Session
+
+      An emergency alert has been triggered during a Childcare Volunteer Session.
+      Please respond immediately.
+
+      Location: [Insert location from LocationComponent]
+
+      This is an automated message. Do not reply.
+    `;
+
+    try {
+      await sendEmails(recipients, emailTemplate);
+      console.log("Emergency alert sent!");
+      setAlertSent(true);
+    } catch (error) {
+      console.error("Failed to send emergency alert:", error);
+    }
   };
 
   const handleEndSession = () => {
@@ -38,6 +67,7 @@ export default function Home() {
               onClick={handleEmergencyAlert} 
               variant="destructive" 
               className="w-full h-16 text-lg font-semibold"
+              disabled={alertSent}
             >
               <AlertCircle className="mr-2 h-6 w-6" /> Emergency Alert
             </Button>
@@ -50,6 +80,15 @@ export default function Home() {
             </Button>
           </CardContent>
         </Card>
+        {alertSent && (
+          <Alert variant="destructive" className="mt-4 w-full max-w-md">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Emergency Alert Sent</AlertTitle>
+            <AlertDescription>
+              An emergency alert has been sent to the designated contacts.
+            </AlertDescription>
+          </Alert>
+        )}
       </main>
     </div>
   );
