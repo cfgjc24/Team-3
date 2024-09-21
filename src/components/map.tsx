@@ -17,7 +17,7 @@ interface MapComponentProps {
 const MapComponent: React.FC<MapComponentProps> = ({
   styleUrl = "https://api.maptiler.com/maps/basic-v2/style.json?key=***REMOVED***",
   locations,
-  zoom = 10,
+  zoom = 7,
 }) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const mapInstance = useRef<maplibregl.Map | null>(null);
@@ -25,9 +25,11 @@ const MapComponent: React.FC<MapComponentProps> = ({
   useEffect(() => {
     if (mapRef.current) {
       // Dynamically calculate center based on locations
-      const centerLng = locations.reduce((sum, loc) => sum + loc.longitude, 0) / locations.length;
-      const centerLat = locations.reduce((sum, loc) => sum + loc.latitude, 0) / locations.length;
-
+      console.log(locations)
+    //   const centerLng = locations.reduce((sum, loc) => sum + loc.longitude, 0) / locations.length;
+    //   const centerLat = locations.reduce((sum, loc) => sum + loc.latitude, 0) / locations.length;
+    const centerLng = -74.0060;    
+    const centerLat = 40.712776;
       // Initialize the map
       mapInstance.current = new maplibregl.Map({
         container: mapRef.current,

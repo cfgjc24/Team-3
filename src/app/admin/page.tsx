@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Bell,
   LayoutDashboard,
@@ -39,6 +39,43 @@ import Link from "next/link";
 import MapComponent from "@/components/map";
 
 export default function AdminDashboard() {
+  const [data, setData] = useState<any | null>(null); // To store fetched data
+  const [loading, setLoading] = useState<boolean>(true); // To show loading state
+  const [error, setError] = useState<string | null>(null); // To store any error
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch("http://localhost:4000/providers", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }); // Example API
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+        const res = await response.json();
+        const result = res.slice(0, 6)
+        console.log(result);
+        // retrieve name and coordinates of each provider
+        const providers = result.map((provider: any) => ({
+          name: provider.name,
+          longitude: provider.locationDetails.longitude,
+          latitude: provider.locationDetails.latitude,
+        }));
+        
+        setData(providers); // Update state with fetched data
+      } catch (err: any) {
+        setError(err.message || "Failed to fetch data");
+      } finally {
+        setLoading(false); // Stop loading after data is fetched
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="min-h-screen bg-background flex">
       {/* Sidebar */}
@@ -357,10 +394,7 @@ export default function AdminDashboard() {
                 </Table>
 
                 <MapComponent
-                  locations={[
-                    { name: "John", longitude: 12.550343, latitude: 55.667 },
-                    { name: "Lewis", longitude: 12.338289, latitude: 55.282 },
-                  ]}
+                  locations={data}
                 />
               </ScrollArea>
             </CardContent>
