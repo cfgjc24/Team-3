@@ -343,7 +343,7 @@ export default function AdminDashboard() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {[...Array(10)].map((_, i) => (
+                    {[...Array(6)].map((_, i) => (
                       <TableRow key={i}>
                         <TableCell>Customer {i + 1}</TableCell>
                         <TableCell>Product {i + 1}</TableCell>
@@ -356,12 +356,14 @@ export default function AdminDashboard() {
                   </TableBody>
                 </Table>
 
-                <MapComponent
-                  locations={[
-                    { name: "John", longitude: 12.550343, latitude: 55.667 },
-                    { name: "Lewis", longitude: 12.338289, latitude: 55.282 },
-                  ]}
-                />
+                <div className="mt-6 border-4 border-blue-400 rounded-xl overflow-hidden flex justify-center items-center ">
+                  <MapComponent
+                    locations={[
+                      { name: "John", longitude: 12.550343, latitude: 55.667 },
+                      { name: "Lewis", longitude: 12.338289, latitude: 55.282 },
+                    ]}
+                  />
+                </div>
               </ScrollArea>
             </CardContent>
           </Card>
