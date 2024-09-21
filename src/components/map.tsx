@@ -52,14 +52,14 @@ const MapComponent: React.FC<MapComponentProps> = ({
             .setLngLat([location.longitude, location.latitude])
             .setPopup(
               new maplibregl.Popup({ offset: 25 }) // Optional: Add popups
-                .setHTML(`<h3>${location.name}</h3>`)
+                .setHTML(`<h3>${location.name}</h3>`),
             )
             .addTo(mapInstance.current!);
         });
       });
     }
 
-    // Cleanup on unmount
+    // Cleanup on unmountdash
     return () => {
       if (mapInstance.current) {
         mapInstance.current.remove();

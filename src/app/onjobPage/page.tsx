@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -93,16 +93,17 @@ export default function Home() {
             >
               <ClipboardList className="mr-2 h-6 w-6" /> Sign Form
             </Button>
-            <Button 
-      onClick={handleEmergencyAlert} 
-      variant="destructive" 
-      className="w-full h-16 text-lg font-semibold"
-    >
-      <AlertCircle className="mr-2 h-6 w-6" /> Emergency Alert
-    </Button>
-            <Button 
-              onClick={handleEndSession} 
-              variant="secondary" 
+            <Button
+              onClick={handleEmergencyAlert}
+              variant="destructive"
+              className="w-full h-16 text-lg font-semibold"
+              disabled={alertSent}
+            >
+              <AlertCircle className="mr-2 h-6 w-6" /> Emergency Alert
+            </Button>
+            <Button
+              onClick={handleEndSession}
+              variant="secondary"
               className="w-full h-16 text-lg font-semibold"
             >
               <X className="mr-2 h-6 w-6" /> End Session
