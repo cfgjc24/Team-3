@@ -305,7 +305,7 @@ export default function AdminDashboard() {
                   className="text-2xl font-bold flex flex-col items-center text-center"
                   style={{ color: "#5b91f5" }}
                 >
-                  20 Providers On-Site
+                  5 Providers On-Site
                 </div>
                 <p className="text-xs text-muted-foreground ">
                   +5% from last month
