@@ -60,7 +60,6 @@ app.get("/cases/open/provider/:providerId", (req, res) => {
 app.get("/session_notes", (req, res) => {
     res.json(sessionNoteData);
   });
-  
 
   // Route to get all session notes by provider ID
 app.get("/session_notes/provider/:providerId", (req, res) => {
