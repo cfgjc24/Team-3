@@ -57,7 +57,7 @@ export default function AdminDashboard() {
           throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
         const res = await response.json();
-        const result = res.slice(0, 6)
+        const result = res.slice(0, 6);
         console.log(result);
         // retrieve name and coordinates of each provider
         const providers = result.map((provider: any) => ({
@@ -65,7 +65,7 @@ export default function AdminDashboard() {
           longitude: provider.locationDetails.longitude,
           latitude: provider.locationDetails.latitude,
         }));
-        
+
         setData(providers); // Update state with fetched data
       } catch (err: any) {
         setError(err.message || "Failed to fetch data");
@@ -394,12 +394,7 @@ export default function AdminDashboard() {
                 </Table>
 
                 <div className="mt-6 border-4 border-blue-400 rounded-xl overflow-hidden flex justify-center items-center ">
-                  <MapComponent
-                    locations={[
-                      { name: "John", longitude: 12.550343, latitude: 55.667 },
-                      { name: "Lewis", longitude: 12.338289, latitude: 55.282 },
-                    ]}
-                  />
+                  <MapComponent locations={data} />
                 </div>
               </ScrollArea>
             </CardContent>
