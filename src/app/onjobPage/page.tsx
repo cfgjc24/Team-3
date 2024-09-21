@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle, FileText, X, ClipboardList } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import LocationComponent from "@/components/location";
+import axios from 'axios';
+
 
 // Mock function to simulate sending emails
 const sendEmails = (recipients: string[], template: string) => {
@@ -27,22 +29,34 @@ export default function Home() {
   };
 
   const handleEmergencyAlert = async () => {
-    const recipients = ["dlm352@cornell.edu", "thediegomarques@gmail.com"];
-    const emailTemplate = `
-      Subject: Emergency Alert - Childcare Volunteer Session
-      An emergency alert has been triggered during a Childcare Volunteer Session.
-      Please respond immediately.
-      Location: ${location || "Unknown Location"}
-      This is an automated message. Do not reply.
-    `;
     try {
-      await sendEmails(recipients, emailTemplate);
-      console.log("Emergency alert sent!");
-      setAlertSent(true);
+      // Set up the request config
+      const config = {
+        method: 'post', // Change to POST request
+        maxBodyLength: Infinity,
+        url: 'http://localhost:3001/api/email', // Ensure you use http://
+        headers: {
+          'Content-Type': 'application/json', // Set content type to JSON
+        },
+        data: {
+          message: "This is an emergency alert.", // Example payload
+          alertType: "emergency",
+          timestamp: new Date().toISOString(), // Include a timestamp
+        },
+      };
+  
+      // Make the request
+      const response = await axios.request(config);
+  
+      // Log the response data
+      console.log('Emergency alert sent successfully:', response.data);
     } catch (error) {
-      console.error("Failed to send emergency alert:", error);
+      // Log any error that occurs during the request
+      console.error('Error sending emergency alert:', error.message);
     }
   };
+  
+  
 
   const handleEndSession = () => {
     window.location.href = "/offjob";
@@ -80,13 +94,12 @@ export default function Home() {
               <ClipboardList className="mr-2 h-6 w-6" /> Sign Form
             </Button>
             <Button 
-              onClick={handleEmergencyAlert} 
-              variant="destructive" 
-              className="w-full h-16 text-lg font-semibold"
-              disabled={alertSent}
-            >
-              <AlertCircle className="mr-2 h-6 w-6" /> Emergency Alert
-            </Button>
+      onClick={handleEmergencyAlert} 
+      variant="destructive" 
+      className="w-full h-16 text-lg font-semibold"
+    >
+      <AlertCircle className="mr-2 h-6 w-6" /> Emergency Alert
+    </Button>
             <Button 
               onClick={handleEndSession} 
               variant="secondary" 

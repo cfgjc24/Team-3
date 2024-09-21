@@ -1,0 +1,56 @@
+{
+  "contentHash": "91cf1507c4c5939e1d98396aad59b253",
+  "runtime": "node",
+  "cliPackageVersion": "3.0.6",
+  "packageVersion": "3.0.6",
+  "environment": "dev",
+  "target": "dev",
+  "files": [
+    {
+      "entry": "src/trigger/example.ts",
+      "out": "C:\\Users\\pagug\\Downloads\\JPMorgan\\Team-3\\.trigger\\tmp\\build-QDHAfw\\Downloads\\JPMorgan\\Team-3\\src\\trigger\\example.mjs"
+    }
+  ],
+  "sources": {
+    "src/trigger/example.ts": {
+      "contents": "eJxdj8tqwzAQRff6ilutHFCcRehGJiHLfkCha2EprrGsCRrlYYz+vUgYAt3M5sy5d2acbxQTVngaBhcVkuFJ4WnGhIxrpBnykuJYYGvd48B2OjyOshPCvaraU+CEX+c9/VD09tvwhFPNaVYBjFZDVrx/Fi6VAOI9aBheQo/mZhZPxmqYsCis6NMLeYfTGUXHdlnraWjkV8lRqEEfsmxvttq0TlTH1AfKaK8UmxXsegqWNT7fS9GlewxbCzA7ZjM4jf8tlWcBZCXyrvsDqotfnw==",
+      "contentHash": "7e0558a3c2cc8f85360dfe5cb8c5f603"
+    },
+    "trigger.config.ts": {
+      "contents": "eJxlkD9PxDAMxfd8CisTSNW1cFtuAcFyEmxsCKFe40aBJC6OWxVO/e6o5cofsdjWz+9ZT/axIxY4gsXWJ7yh1HoHE7RMEfSVsHcOeWNxKLN9LYet3imF42Ky2NZ9kD/Ws6MC6JhesBEDep6e3UCNExxTPBC/oUvvY9CFAuA+iY9oQCeyuKBA7g4HDAZ0IPelQmGP2cB8GgBTfQho9+kWBwPCPRYLP6VZZQCxHq9FMHaSDWyLlfr04CNSL/t0nw1cVFVV/Dj+7b6Xbd0IsYHLFXCdLEX/gb9TTHNbivWcDTzqTZm5KU+P1E+Fms536hP+UHMR",
+      "contentHash": "a2ebdd61f82651ebb69bfb51904bd822"
+    },
+    "tsconfig.json": {
+      "contents": "eJxtUctqwzAQvBvyD0JHk9r3nAqlh4aGQq8hFNvaOpvohbROXYL/vUiO1VT0JGlmd3ZmdV0VjPHOKIsS3JslNNrzDbsGnDEuseUbtufCKL5m4aiQwDWthPAGr2Ekfljfyhspzdc2CJAbYEH9Ge0rtk9H6M45RQ47ykBtnhXmIPidEYOEF03gjM1YFTm+SZb+Eu/gjRxCuFDSDlpIcKnGBfYCW2/0btG5F0dvZEMgZjJPd/JjELUOPLgLJFXUnQMFmhqZdVg59BjXvJ8Rtux7jt+omCTmWPBpvqRN24aOdx/FGH+sy/hVVe1dV5f8MDOxcYptwZIcBPwOjjMeQF8qUZFP1suyLv95jwmoQl9N3xZ8nReTw74HV3VGf2IfmEDMxjmMyQHXRsCHuu30sCqmVfEDJjGuTg==",
+      "contentHash": "0849e8f564234562cfb7314e503f6b2d"
+    },
+    "package.json": {
+      "contents": "eJx1VF1v4yAQfI+U/2D5ueCPOJe0T3243xGJg627OhssFvsSVf3vJ4xtaJq+eXcGmJ0Bf+x3WZZr0UP+kuXyrc2f5s4EltBo3yx5xculPVichPNcZ0cIPZIWB0f5S/bh6yzLFUx+oYary/z309L/M2KnNiRUK0ZOWLdhoVqxDnWE5sIDn+F4BQNoBVoipBpeFcDQWtEXpP76xZcDP61zePwdhOqAaMTCgpDzAZeaV/yccqxBaTTdUY6RMlikXhSyQwgiL0dePfMqMualrDWm7YD1YqBCDLhu9cwPkeksti1YrmBKVJf810YRVzQ09yt+4qforFE3NghLYBe0LpOdZSeI2CQsCi2BidG9G4vuNnPLL77Ijq7bnHEKuA4WKBzd8LpKVnSjRAUsOlTypjkmBB9bUNXwmldRVvDukWlxs+rMD/cAU6b/GYReYLd5l6IEWi0TlIk+J7D7h1qxHmwLy/BHXn8jSCImNPbhBXiXS376ehen3z9cxzTb7R3cpfvqbgNQoY1aVJT3UOrLQyyxJmZH6wO63DeZNPoNW7ZG9C0hQ04usZ8f+bFM0SQ+z2rmf0JINhi0333ud/8BbuYe8w==",
+      "contentHash": "a9aea45965cb1ed44be6e96172e3f0e8"
+    }
+  },
+  "externals": [
+    {
+      "name": "import-in-the-middle",
+      "version": "1.11.0"
+    }
+  ],
+  "config": {
+    "project": "proj_gvocgtexnmborqegnyxl",
+    "dirs": [
+      "./src/trigger"
+    ]
+  },
+  "outputPath": "C:\\Users\\pagug\\Downloads\\JPMorgan\\Team-3\\.trigger\\tmp\\build-QDHAfw",
+  "runWorkerEntryPoint": "C:\\Users\\pagug\\Downloads\\JPMorgan\\Team-3\\.trigger\\tmp\\build-QDHAfw\\AppData\\Local\\npm-cache\\_npx\\f51a09bd0abf5f10\\node_modules\\trigger.dev\\dist\\esm\\entryPoints\\dev-run-worker.mjs",
+  "indexWorkerEntryPoint": "C:\\Users\\pagug\\Downloads\\JPMorgan\\Team-3\\.trigger\\tmp\\build-QDHAfw\\AppData\\Local\\npm-cache\\_npx\\f51a09bd0abf5f10\\node_modules\\trigger.dev\\dist\\esm\\entryPoints\\dev-index-worker.mjs",
+  "configPath": "C:\\Users\\pagug\\Downloads\\JPMorgan\\Team-3\\.trigger\\tmp\\build-QDHAfw\\Downloads\\JPMorgan\\Team-3\\trigger.config.mjs",
+  "customConditions": [],
+  "deploy": {
+    "env": {}
+  },
+  "build": {},
+  "otelImportHook": {
+    "include": []
+  }
+}

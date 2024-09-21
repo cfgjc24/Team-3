@@ -1,0 +1,14 @@
+{
+  "configPath": "C:\\Users\\pagug\\Downloads\\JPMorgan\\Team-3\\.trigger\\tmp\\build-QDHAfw\\Downloads\\JPMorgan\\Team-3\\trigger.config.mjs",
+  "tasks": [
+    {
+      "id": "hello-world",
+      "filePath": "src/trigger/example.ts",
+      "exportName": "helloWorldTask",
+      "entryPoint": "C:\\Users\\pagug\\Downloads\\JPMorgan\\Team-3\\.trigger\\tmp\\build-QDHAfw\\Downloads\\JPMorgan\\Team-3\\src\\trigger\\example.mjs"
+    }
+  ],
+  "workerEntryPoint": "C:\\Users\\pagug\\Downloads\\JPMorgan\\Team-3\\.trigger\\tmp\\build-QDHAfw\\AppData\\Local\\npm-cache\\_npx\\f51a09bd0abf5f10\\node_modules\\trigger.dev\\dist\\esm\\entryPoints\\dev-run-worker.mjs",
+  "runtime": "node",
+  "customConditions": []
+}
