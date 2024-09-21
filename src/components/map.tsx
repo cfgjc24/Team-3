@@ -17,7 +17,7 @@ interface MapComponentProps {
 const MapComponent: React.FC<MapComponentProps> = ({
   styleUrl = "https://api.maptiler.com/maps/basic-v2/style.json?key=***REMOVED***",
   locations,
-  zoom = 5,
+  zoom = 10,
 }) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const mapInstance = useRef<maplibregl.Map | null>(null);
@@ -36,7 +36,6 @@ const MapComponent: React.FC<MapComponentProps> = ({
         zoom,
       });
 
-      // Add markers after the map has loaded
       mapInstance.current.on("load", () => {
         locations.forEach((location) => {
           new maplibregl.Marker()
@@ -47,6 +46,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
             )
             .addTo(mapInstance.current!);
         });
+
       });
     }
 
