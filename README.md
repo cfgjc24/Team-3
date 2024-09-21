@@ -22,7 +22,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-**Technologies: **
+# Technologies:
 Next.js – Server-side rendering, routing, and React framework.
 React – The JavaScript library used to build the user interface.
 TypeScript – TypeScript is used to add static typing to your JavaScript code, improving code quality and developer experience.
