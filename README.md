@@ -135,7 +135,7 @@ The API uses mock data stored in JSON files. The data includes:
 
 This data is imported from the `./data/data.js` file.
 
-## #CORS
+### CORS
 
 Cross-Origin Resource Sharing (CORS) is enabled for all origins.
 
