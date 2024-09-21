@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 // jsonData.js
 
 const caseData = require("./case.json");

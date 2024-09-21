@@ -12,4 +12,6 @@ const {
 function attemptSignIn(data) {
   const email = data.email;
   const hashedPassword = hash(data.password);
+
+  
 }
