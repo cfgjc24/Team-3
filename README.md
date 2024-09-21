@@ -52,6 +52,9 @@ ExpressJS - Backend framework for building the server-side API.
 
 # API Documentation
 
+Deepgram API
+OpenAI API
+
 ## Express API for Provider and Case Management
 
 This Express API provides endpoints for managing providers, cases, session notes, and clients. It's designed to handle authentication and serve data for a provider and case management system.
