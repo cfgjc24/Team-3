@@ -45,6 +45,7 @@ export default function Home() {
   };
 
   const handleEndSession = () => {
+    window.location.href = "/offjob";
     console.log("Session ended.");
   };
 
