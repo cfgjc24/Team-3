@@ -28,6 +28,18 @@ app.get("/providers", (req, res) => {
     }
   });
 
+  // Route to get all cases by provider ID
+app.get("/cases/provider/:providerId", (req, res) => {
+    const providerId = parseInt(req.params.providerId); // Get the provider ID from the request parameters
+    const cases = caseData.filter((caseItem) => caseItem.providerId === providerId); // Filter cases by provider ID
+  
+    if (cases.length > 0) {
+      res.json(cases); // If cases are found, return the list of cases
+    } else {
+      res.status(404).json({ message: "No cases found for this provider" }); // If no cases are found, return a 404 error
+    }
+  });
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
