@@ -6,6 +6,7 @@ const {
   sessionNoteData,
   providerData,
   adminData,
+  clientData
 } = require("./data/data"); // Import the JSON data
 
 const attemptSignIn = require("./functions/auth");
@@ -90,6 +91,11 @@ app.post("/sign-in", (req, res) => {
   console.log(data);
   const resData = attemptSignIn(data);
   res.status(200).json(resData);
+});
+
+// Route to get all clients
+app.get("/clients", (req, res) => {
+  res.json(clientData); // Serve the client data
 });
 
 const PORT = process.env.PORT || 4000;

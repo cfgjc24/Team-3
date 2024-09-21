@@ -12,4 +12,5 @@ module.exports = {
   sessionNoteData,
   providerData,
   adminData,
+  clientData
 };

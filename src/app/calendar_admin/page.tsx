@@ -8,18 +8,10 @@ const Schedule: React.FC = () => {
   const [selectedSlot, setSelectedSlot] = useState<{
     day: string;
     time: string;
-    clients: { id: number; name: string; email: string; start: string; end: string }[];
+    clients: { id: number; name: string; email: string; startTime: string; endTime: string }[];
   } | null>(null);
   const [checkedClients, setCheckedClients] = useState<Set<number>>(new Set());
-
-  // Sample dummy data with start and end times for each client
-  const [dummyData, setDummyData] = useState<DummyEvent[]>([
-    { id: 1, day: '9/20', start: '8:00 AM', end: '10:00 AM', name: 'Alice', email: 'alice@example.com' },
-    { id: 2, day: '9/20', start: '8:00 AM', end: '9:00 AM', name: 'Bob', email: 'bob@example.com' },
-    { id: 3, day: '9/21', start: '12:00 PM', end: '1:00 PM', name: 'Carol', email: 'carol@example.com' },
-    { id: 4, day: '9/22', start: '10:30 AM', end: '2:00 PM', name: 'Dad', email: 'dad@example.com' },
-    // Add more sample data as needed
-  ]);
+  const [clientData, setClientData] = useState<DataEvent[]>([]);
 
   const timeIntervals = [
     '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM',
@@ -28,19 +20,11 @@ const Schedule: React.FC = () => {
 
   const daysOfWeek = ['9/16', '9/17', '9/18', '9/19', '9/20', '9/21', '9/22'];
 
-  type DummyEvent = {
-    id: number; // Unique identifier for each event
-    day: string;
-    start: string;
-    end: string;
-    name: string;
-    email: string;
-  };
-
-  type TimeSlot = {
+  type DataEvent = {
     id: number;
     day: string;
-    time: string;
+    startTime: string;
+    endTime: string;
     name: string;
     email: string;
   };
@@ -48,12 +32,16 @@ const Schedule: React.FC = () => {
   // State for storing the grid data
   const [gridData, setGridData] = useState<{
     [day: string]: {
-      [time: string]: { id: number; name: string; email: string; start: string; end: string }[];
+      [time: string]: { id: number; name: string; email: string; startTime: string; endTime: string }[];
     };
   }>({});
 
   // Function to convert time strings into total minutes since midnight
-  const timeToMinutes = (time: string): number => {
+  const timeToMinutes = (time: string | undefined): number => {
+    if (!time || typeof time !== 'string') {
+      console.error('Invalid time format:', time);
+      return 0; // Return 0 or handle the error appropriately
+    }
     const [timePart, period] = time.split(' ');
     const [hoursStr, minutesStr] = timePart.split(':');
     let hours = parseInt(hoursStr);
@@ -68,59 +56,61 @@ const Schedule: React.FC = () => {
     return hours * 60 + minutes;
   };
 
-  // New function to separate dummy data into individual time slots
-  const separateTimeSlots = (data: DummyEvent[]): TimeSlot[] => {
-    const separatedSlots: TimeSlot[] = [];
+  // Function to process client data directly into grid data
+  const processGridData = (data: DataEvent[]) => {
+    const newGridData: {
+      [day: string]: {
+        [time: string]: { id: number; name: string; email: string; startTime: string; endTime: string }[];
+      };
+    } = {};
 
     data.forEach((event) => {
-      const startMinutes = timeToMinutes(event.start);
-      const endMinutes = timeToMinutes(event.end);
+      const { id, day, startTime, endTime, name, email } = event;
+      if (!newGridData[day]) {
+        newGridData[day] = {};
+      }
+
+      const startMinutes = timeToMinutes(startTime);
+      const endMinutes = timeToMinutes(endTime);
       const startIndex = timeIntervals.findIndex((time) => timeToMinutes(time) >= startMinutes);
       const endIndex = timeIntervals.findIndex((time) => timeToMinutes(time) >= endMinutes);
 
       // Loop through each time slot covered by the event and create individual slot entries
       for (let i = startIndex; i <= endIndex && i < timeIntervals.length; i++) {
-        separatedSlots.push({
-          id: event.id,
-          day: event.day,
-          time: timeIntervals[i],
-          name: event.name,
-          email: event.email,
-        });
+        const time = timeIntervals[i];
+        if (!newGridData[day][time]) {
+          newGridData[day][time] = [];
+        }
+
+        newGridData[day][time].push({ id, name, email, startTime, endTime });
       }
-    });
-
-    return separatedSlots;
-  };
-
-  // Function to process separated slots into grid data
-  const processGridData = (slots: TimeSlot[]) => {
-    const newGridData: {
-      [day: string]: {
-        [time: string]: { id: number; name: string; email: string; start: string; end: string }[];
-      };
-    } = {};
-
-    slots.forEach((slot) => {
-      const { day, time, name, email, id } = slot;
-      if (!newGridData[day]) {
-        newGridData[day] = {};
-      }
-      if (!newGridData[day][time]) {
-        newGridData[day][time] = [];
-      }
-
-      newGridData[day][time].push({ id, name, email, start: time, end: time });
     });
 
     setGridData(newGridData);
   };
 
+  // Fetch client data from the server
   useEffect(() => {
-    // Separate the dummy data into individual slots and process them into grid data
-    const separatedSlots = separateTimeSlots(dummyData);
-    processGridData(separatedSlots);
-  }, [dummyData]);
+    const fetchClientData = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/clients'); // Ensure the endpoint matches your backend setup
+        if (!response.ok) {
+          throw new Error('Failed to fetch client data');
+        }
+        const data = await response.json();
+        setClientData(data); // Store the fetched data in state
+      } catch (error) {
+        console.error('Error fetching client data:', error);
+      }
+    };
+
+    fetchClientData();
+  }, []);
+
+  // Process the fetched client data into grid data
+  useEffect(() => {
+    processGridData(clientData);
+  }, [clientData]);
 
   // Handle button click to show clients in the selected slot
   const handleButtonClick = (day: string, time: string) => {
@@ -143,7 +133,7 @@ const Schedule: React.FC = () => {
     });
   };
 
-  // Remove checked clients from the grid and dummy data
+  // Remove checked clients from the grid and client data
   const handleRemoveClients = () => {
     if (selectedSlot) {
       const updatedClients = selectedSlot.clients.filter(
@@ -159,11 +149,11 @@ const Schedule: React.FC = () => {
         return newGridData;
       });
 
-      // Update dummyData to remove clients only from specific time slots
-      const updatedDummyData = dummyData.filter(
+      // Update clientData to remove clients only from specific time slots
+      const updatedClientData = clientData.filter(
         (event) => !checkedClients.has(event.id)
       );
-      setDummyData(updatedDummyData);
+      setClientData(updatedClientData);
 
       setShowForm(false);
     }
@@ -171,89 +161,94 @@ const Schedule: React.FC = () => {
 
   const getColorByCount = (count: number): string => {
     if (count === 0) return 'transparent';
-    if (count === 1) return '#E0F2F1';
-    if (count === 2) return '#B2DFDB';
-    return '#4DB6AC';
+    if (count === 1) return '#D6E4FF'; 
+    if (count === 2) return '#A8C7FF';
+    if (count === 3) return '#7AA9FF'; 
+    return '#5b91f5'; 
   };
 
   return (
     <div className="admin-dashboard">
-    <header className="header">
-      <h1>Assign providers and remove from calendar: </h1>
-    </header>
-    <div className="weekly-schedule">
-      <div className="header-row">
-        <div className="time-label empty-space"></div>
-        {daysOfWeek.map((day, index) => (
-          <div className="day-label" key={index}>
-            {day}
+      <header className="header">
+        <h1>Assign providers and remove from calendar: </h1>
+      </header>
+      <div className="weekly-schedule">
+        <div className="header-row">
+          <div className="time-label empty-space"></div>
+          {daysOfWeek.map((day, index) => (
+            <div className="day-label" key={index}>
+              {day}
+            </div>
+          ))}
+        </div>
+        {timeIntervals.map((time, index) => (
+          <div className="row" key={index}>
+            <div className="time-label">{time}</div>
+            <div className="day-columns">
+              {daysOfWeek.map((day, idx) => {
+                const clientsAtSlot = gridData[day]?.[time] || [];
+                const count = clientsAtSlot.length;
+
+                return (
+                  <button
+                    className="grid-button"
+                    key={idx}
+                    style={{
+                      backgroundColor: getColorByCount(count),
+                    }}
+                    onClick={() => handleButtonClick(day, time)}
+                    disabled={count === 0}
+                  >
+                    {count > 0 ? `${count} needed` : ''}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         ))}
-      </div>
-      </div>
-      {timeIntervals.map((time, index) => (
-        <div className="row" key={index}>
-          <div className="time-label">{time}</div>
-          <div className="day-columns">
-            {daysOfWeek.map((day, idx) => {
-              const clientsAtSlot = gridData[day]?.[time] || [];
-              const count = clientsAtSlot.length;
 
-              return (
-                <button
-                  className="grid-button"
-                  key={idx}
-                  style={{
-                    backgroundColor: getColorByCount(count),
-                  }}
-                  onClick={() => handleButtonClick(day, time)}
-                  disabled={count === 0}
-                >
-                  {count > 0 ? `${count} needed` : ''}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      ))}
-
-      {showForm && selectedSlot && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3 className="modal-title">{`Clients needing help at ${selectedSlot.time} on ${selectedSlot.day}`}</h3>
-            <table className="client-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Select</th>
-                </tr>
-              </thead>
-              <tbody>
-                {selectedSlot.clients.map((client, index) => (
-                  <tr key={index}>
-                    <td>{client.name}</td>
-                    <td>{client.email}</td>
-                    <td>
-                      <input
-                        type="checkbox"
-                        checked={checkedClients.has(client.id)}
-                        onChange={() => handleCheckboxChange(client.id)}
-                      />
-                    </td>
+        {showForm && selectedSlot && (
+          <div className="modal">
+            <div className="modal-content">
+              <h3 className="modal-title">{`Clients needing help at ${selectedSlot.time} on ${selectedSlot.day}`}</h3>
+              <table className="client-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Select</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-            <button className="remove-button" onClick={handleRemoveClients}>
-              Remove Selected Clients
-            </button>
-            <button className="close-button" onClick={() => setShowForm(false)}>
-              Close
-            </button>
+                </thead>
+                <tbody>
+                  {selectedSlot.clients.map((client, index) => (
+                    <tr key={index}>
+                      <td>{client.name}</td>
+                      <td>{client.email}</td>
+                      <td>{client.startTime}</td>
+                      <td>{client.endTime}</td>
+                      <td>
+                        <input
+                          type="checkbox"
+                          checked={checkedClients.has(client.id)}
+                          onChange={() => handleCheckboxChange(client.id)}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <button className="remove-button" onClick={handleRemoveClients}>
+                Remove Selected Clients
+              </button>
+              <button className="close-button" onClick={() => setShowForm(false)}>
+                Close
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
