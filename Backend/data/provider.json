@@ -2,13 +2,13 @@
   {
     "id": 1,
     "name": "Sara Black",
-    "email": "bridgetmccarthy@example.net",
-    "phone": "685.387.3350",
+    "email": "sarablack@example.net",
+    "phone": "(685)-387-3350",
     "bio": "Magazine federal newspaper rule country. Itself service man effect.",
     "availability": "Weekends",
     "location": "New York",
     "adminId": 22,
-    "checked-in": "open",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.712776,
       "longitude": -74.005974
@@ -17,8 +17,8 @@
   {
     "id": 2,
     "name": "Scott Phillips",
-    "email": "lhoward@example.net",
-    "phone": "(612)531-1567",
+    "email": "sphillips@example.net",
+    "phone": "(612)-531-1567",
     "bio": "Head direction deep on every fight. Great discussion upon say great difficult manager.",
     "availability": "24/7",
     "location": "Brooklyn",
@@ -32,8 +32,8 @@
   {
     "id": 3,
     "name": "Nathan Green",
-    "email": "thomaskristina@example.org",
-    "phone": "317.651.4444x78266",
+    "email": "ngreen@example.org",
+    "phone": "(317)-651-4444 x78266",
     "bio": "With candidate suffer group program bring. Upon certainly they.",
     "availability": "Monday-Friday",
     "location": "Queens",
@@ -47,8 +47,8 @@
   {
     "id": 4,
     "name": "Vanessa Mcbride",
-    "email": "amy13@example.org",
-    "phone": "(299)970-4031x58090",
+    "email": "vmc@example.org",
+    "phone": "(299)-970-4031 x58090",
     "bio": "Region service mouth lose summer ok. Popular remain true dog performance.",
     "availability": "Weekends",
     "location": "Bronx",
@@ -62,7 +62,7 @@
   {
     "id": 5,
     "name": "Robert Lee",
-    "email": "jesse25@example.org",
+    "email": "rlee@example.org",
     "phone": "8175752133",
     "bio": "Down fact other reduce class safe. Southern already us recently including.",
     "availability": "Weekends",
@@ -77,7 +77,7 @@
   {
     "id": 6,
     "name": "Jacob Tucker",
-    "email": "wcurry@example.net",
+    "email": "jtuck@example.net",
     "phone": "556-879-2062x98293",
     "bio": "Itself assume American impact card. Bit think magazine research.",
     "availability": "Weekends",
@@ -92,7 +92,7 @@
   {
     "id": 7,
     "name": "Collin Moon",
-    "email": "spencerjudy@example.org",
+    "email": "cmoon@example.org",
     "phone": "(616)949-6950",
     "bio": "Country these agent west. Role couple lot stock fine statement. Too husband rate family.",
     "availability": "Weekends",

@@ -40,6 +40,7 @@ import MapComponent from "@/components/map";
 
 export default function AdminDashboard() {
   const [data, setData] = useState<any | null>(null); // To store fetched data
+  const [tableData, setTableData] = useState<any | null>(null);
   const [loading, setLoading] = useState<boolean>(true); // To show loading state
   const [error, setError] = useState<string | null>(null); // To store any error
 
@@ -66,6 +67,14 @@ export default function AdminDashboard() {
           latitude: provider.locationDetails.latitude,
         }));
 
+        const providersForTable = result.map((provider: any) => ({
+          name: provider.name,
+          phone: provider.phone,
+          email: provider.email,
+          checkedIn: provider["checked-in"],
+        }));
+        console.log(providersForTable);
+        setTableData(providersForTable);
         setData(providers); // Update state with fetched data
       } catch (err: any) {
         setError(err.message || "Failed to fetch data");
@@ -356,11 +365,11 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <ScrollArea className="h-[800px]">
-                <Table>
+                <Table className="w-full table-fixed text-sm border-collapse">
                   <TableHeader>
                     <TableRow>
                       <TableHead
-                        className="text-xs text-muted-foreground font-bold "
+                        className="text-xs text-muted-foreground font-bold"
                         style={{ color: "#5b91f5" }}
                       >
                         Name
@@ -369,27 +378,112 @@ export default function AdminDashboard() {
                         className="text-xs text-muted-foreground font-bold"
                         style={{ color: "#5b91f5" }}
                       >
-                        Phone
+                        Phone Number
                       </TableHead>
                       <TableHead
                         className="text-xs text-muted-foreground font-bold"
                         style={{ color: "#5b91f5" }}
                       >
-                        Case
+                        Email
+                      </TableHead>
+                      <TableHead
+                        className="text-xs text-muted-foreground font-bold"
+                        style={{ color: "#5b91f5" }}
+                      >
+                        Checked In
                       </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {[...Array(6)].map((_, i) => (
-                      <TableRow key={i}>
-                        <TableCell>Customer {i + 1}</TableCell>
-                        <TableCell>Product {i + 1}</TableCell>
-                        <TableCell>
-                          ${(Math.random() * 1000).toFixed(2)}
+                    {loading ? (
+                      <TableRow>
+                        <TableCell colSpan={4} className="text-center py-4">
+                          Loading...
                         </TableCell>
-                        <TableCell>{new Date().toLocaleDateString()}</TableCell>
                       </TableRow>
-                    ))}
+                    ) : error ? (
+                      <TableRow>
+                        <TableCell
+                          colSpan={4}
+                          className="text-center py-4 text-red-500"
+                        >
+                          Error: {error}
+                        </TableCell>
+                      </TableRow>
+                    ) : tableData && tableData.length > 0 ? (
+                      tableData.map(
+                        (provider: {
+                          id: React.Key | null | undefined;
+                          name:
+                            | string
+                            | number
+                            | bigint
+                            | boolean
+                            | React.ReactElement<
+                                any,
+                                string | React.JSXElementConstructor<any>
+                              >
+                            | Iterable<React.ReactNode>
+                            | React.ReactPortal
+                            | Promise<React.AwaitedReactNode>
+                            | null
+                            | undefined;
+                          phone:
+                            | string
+                            | number
+                            | bigint
+                            | boolean
+                            | React.ReactElement<
+                                any,
+                                string | React.JSXElementConstructor<any>
+                              >
+                            | Iterable<React.ReactNode>
+                            | React.ReactPortal
+                            | Promise<React.AwaitedReactNode>
+                            | null
+                            | undefined;
+                          email:
+                            | string
+                            | number
+                            | bigint
+                            | boolean
+                            | React.ReactElement<
+                                any,
+                                string | React.JSXElementConstructor<any>
+                              >
+                            | Iterable<React.ReactNode>
+                            | React.ReactPortal
+                            | Promise<React.AwaitedReactNode>
+                            | null
+                            | undefined;
+                          checkedIn: any;
+                        }) => (
+                          <TableRow
+                            key={provider.id}
+                            className="text-xs hover:bg-gray-200"
+                          >
+                            <TableCell className="px-2 py-1">
+                              {provider.name}
+                            </TableCell>
+                            <TableCell className="px-2 py-1">
+                              {provider.phone}
+                            </TableCell>
+                            <TableCell className="px-2 py-1">
+                              {provider.email}
+                            </TableCell>
+                            <TableCell className="px-2 py-1">
+                              {provider.checkedIn ? "Yes" : "No"}
+                            </TableCell>
+                          </TableRow>
+                        )
+                      )
+                    ) : (
+                      <TableRow>
+                        <TableCell colSpan={4} className="text-center py-4">
+                          No data available.
+                        </TableCell>
+                      </TableRow>
+                    )}
                   </TableBody>
                 </Table>
 
