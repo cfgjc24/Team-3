@@ -11,6 +11,9 @@ const Schedule: React.FC = () => {
     count: number;
   } | null>(null);
   const [userSlots, setUserSlots] = useState<{ day: string; time: string }[]>([]);
+  const [clientData, setClientData] = useState<clientData[]>([]); // State to store fetched client data
+  const [eventsData, setEventsData] = useState<clientData[]>([]); // State for processed client data
+  const [gridData, setGridData] = useState<{ [day: string]: { [timeIndex: number]: number } }>({});
 
   // Define time intervals
   const timeIntervals = [
@@ -21,36 +24,20 @@ const Schedule: React.FC = () => {
   // Define the days of the week with specific dates
   const daysOfWeek = ['9/16', '9/17', '9/18', '9/19', '9/20', '9/21', '9/22'];
 
-  // Define types for dummy data
-  type DummyEvent = {
+  // Define types for client data
+  type clientData = {
     day: string;
-    start: string;
-    end: string;
+    startTime: string;
+    endTime: string;
     text: string;
   };
 
-  // Sample events data with day, start and end times, and text labels
-  const dummyData: DummyEvent[] = [
-    { day: '9/20', start: '8:00 AM', end: '4:00 PM', text: 'Alice' },
-    { day: '9/20', start: '8:00 AM', end: '4:00 PM', text: 'Bob' },
-    { day: '9/21', start: '12:00 PM', end: '1:00 PM', text: 'Carol' },
-    { day: '9/22', start: '10:30 AM', end: '2:00 PM', text: 'Dad' },
-    { day: '9/19', start: '8:00 AM', end: '4:00 PM', text: 'Alice' },
-    { day: '9/18', start: '8:00 AM', end: '4:00 PM', text: 'Bob' },
-    { day: '9/29', start: '11:00 AM', end: '1:00 PM', text: 'Carol' },
-    { day: '9/22', start: '2:30 PM', end: '3:00 PM', text: 'Dad' },
-    { day: '9/20', start: '8:00 AM', end: '4:00 PM', text: 'Alice' },
-    { day: '9/20', start: '12:00 PM', end: '6:00 PM', text: 'Bob' },
-    { day: '9/21', start: '12:00 PM', end: '1:00 PM', text: 'Carol' },
-    { day: '9/22', start: '10:30 AM', end: '2:00 PM', text: 'Dad' },
-    { day: '9/20', start: '2:00 PM', end: '7:00 PM', text: 'Alice' },
-    { day: '9/18', start: '10:00 AM', end: '4:00 PM', text: 'Bob' },
-    { day: '9/21', start: '12:00 PM', end: '1:00 PM', text: 'Carol' },
-    { day: '9/22', start: '10:30 AM', end: '2:00 PM', text: 'Dad' },
-  ];
-
   // Function to convert time strings into total minutes since midnight
-  const timeToMinutes = (time: string): number => {
+  const timeToMinutes = (time: string | undefined): number => {
+    if (!time || typeof time !== 'string') {
+      console.error('Invalid time format:', time);
+      return 0; // Return 0 or handle the error appropriately
+    }
     const [timePart, period] = time.split(' ');
     const [hoursStr, minutesStr] = timePart.split(':');
     let hours = parseInt(hoursStr);
@@ -65,18 +52,41 @@ const Schedule: React.FC = () => {
     return hours * 60 + minutes;
   };
 
-  // Function to create gridData from eventsData
-  const createGridData = (eventsData: DummyEvent[]) => {
-    const gridData: { [day: string]: { [timeIndex: number]: number } } = {};
+  // Fetch client data from the server
+  useEffect(() => {
+    const fetchClientData = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/clients'); // Ensure the endpoint matches your backend setup
+        if (!response.ok) {
+          throw new Error('Failed to fetch client data');
+        }
+        const data = await response.json();
+        setClientData(data); // Store the fetched data in state
+      } catch (error) {
+        console.error('Error fetching client data:', error);
+      }
+    };
 
+    fetchClientData();
+  }, []);
+
+  // Update eventsData when clientData is fetched
+  useEffect(() => {
+    setEventsData(clientData);
+  }, [clientData]);
+
+  // Function to create gridData from eventsData
+  const createGridData = (eventsData: clientData[]) => {
+    const gridData: { [day: string]: { [timeIndex: number]: number } } = {};
+    console.log(gridData)
     eventsData.forEach((event) => {
       const day = event.day;
       if (!gridData[day]) {
         gridData[day] = {};
       }
 
-      const startMinutes = timeToMinutes(event.start);
-      const endMinutes = timeToMinutes(event.end);
+      const startMinutes = timeToMinutes(event.startTime);
+      const endMinutes = timeToMinutes(event.endTime);
       const startIndex = Math.floor(startMinutes / 60) - 8; // Adjust based on the start hour (8 AM)
       const endIndex = Math.floor(endMinutes / 60) - 8; // Adjust based on the start hour (8 AM)
 
@@ -91,10 +101,7 @@ const Schedule: React.FC = () => {
     return gridData;
   };
 
-  // State for eventsData and gridData
-  const [eventsData, setEventsData] = useState<DummyEvent[]>(dummyData);
-  const [gridData, setGridData] = useState<{ [day: string]: { [timeIndex: number]: number } }>({});
-
+  // Update gridData whenever eventsData changes
   useEffect(() => {
     const newGridData = createGridData(eventsData);
     setGridData(newGridData);
@@ -115,7 +122,7 @@ const Schedule: React.FC = () => {
       setGridData((prevGridData) => {
         const newGridData = { ...prevGridData };
         if (newGridData[day] && newGridData[day][timeIndex] !== undefined) {
-          newGridData[day] = { ...newGridData[day] }; 
+          newGridData[day] = { ...newGridData[day] };
           newGridData[day][timeIndex] = Math.max(0, newGridData[day][timeIndex] - 1);
         }
         return newGridData;
@@ -135,10 +142,10 @@ const Schedule: React.FC = () => {
   // Function to determine the color based on the number of overlapping events
   const getColorByCount = (count: number): string => {
     if (count === 0) return 'transparent';
-    if (count === 1) return '#E0F2F1'; // Light teal
-    if (count === 2) return '#B2DFDB'; // Muted green
-    if (count === 3) return '#80CBC4'; // Medium muted teal
-    return '#4DB6AC'; // Darker teal for 4 or more overlapping events
+    if (count === 1) return '#D6E4FF'; 
+    if (count === 2) return '#A8C7FF';
+    if (count === 3) return '#7AA9FF'; 
+    return '#5b91f5'; 
   };
 
   return (
@@ -169,7 +176,7 @@ const Schedule: React.FC = () => {
                     key={idx}
                     style={{
                       backgroundColor: isSlotSelected(day, time)
-                        ? '#9ca3af'
+                        ? '#333'
                         : getColorByCount(eventCount),
                       color: isSlotSelected(day, time) ? '#ffffff' : '#111827',
                     }}
