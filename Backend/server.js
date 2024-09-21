@@ -40,6 +40,26 @@ app.get("/cases/provider/:providerId", (req, res) => {
     }
   });
 
+  // Route to get all session notes
+app.get("/session_notes", (req, res) => {
+    res.json(sessionNoteData);
+  });
+  
+
+  // Route to get all session notes by provider ID
+app.get("/session_notes/provider/:providerId", (req, res) => {
+    const providerId = parseInt(req.params.providerId); // Get the provider ID from the request parameters
+    const sessionNotes = sessionNoteData.filter(
+      (note) => note.providerId === providerId
+    ); // Filter session notes by provider ID
+  
+    if (sessionNotes.length > 0) {
+      res.json(sessionNotes); // If session notes are found, return the list of notes
+    } else {
+      res.status(404).json({ message: "No session notes found for this provider" }); // If no session notes are found, return a 404 error
+    }
+  });
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
