@@ -1,92 +1,56 @@
 "use client";
-import LocationComponent from "@/app/components/location";
-import Image from "next/image";
+
+import LocationComponent from "@/components/location";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AlertCircle, FileText, X } from "lucide-react";
 
 export default function Home() {
   const handleRecordMeeting = () => {
-    // Logic for starting to record the meeting
     console.log("Meeting recording started.");
   };
 
   const handleEmergencyAlert = () => {
-    // Logic for sending an emergency alert
     console.log("Emergency alert sent!");
   };
 
   const handleEndSession = () => {
-    // Logic for ending the session
     console.log("Session ended.");
   };
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <LocationComponent />
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <div className="flex flex-col gap-4 items-center sm:items-start">
-          <h1 className="text-xl font-bold">Childcare Volunteer Session</h1>
-
-          <button
-            onClick={handleRecordMeeting}
-            className="rounded-full bg-blue-500 text-white hover:bg-blue-700 transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-          >
-            Record Meeting
-          </button>
-
-          <button
-            onClick={handleEmergencyAlert}
-            className="rounded-full bg-red-500 text-white hover:bg-red-700 transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-          >
-            Emergency Alert
-          </button>
-
-          <button
-            onClick={handleEndSession}
-            className="rounded-full bg-green-500 text-white hover:bg-green-700 transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-          >
-            End Session
-          </button>
-        </div>
+    <div className="flex flex-col min-h-screen p-4 sm:p-6 font-sans bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <main className="flex-grow flex flex-col gap-6 items-center justify-center">
+        <Card className="w-full max-w-md shadow-lg">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl font-bold">Childcare Volunteer Session</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-4">
+            <LocationComponent />
+            <Button 
+              onClick={handleRecordMeeting} 
+              className="w-full h-16 text-lg font-semibold"
+              variant="default"
+            >
+              <FileText className="mr-2 h-6 w-6" /> Record Meeting
+            </Button>
+            <Button 
+              onClick={handleEmergencyAlert} 
+              variant="destructive" 
+              className="w-full h-16 text-lg font-semibold"
+            >
+              <AlertCircle className="mr-2 h-6 w-6" /> Emergency Alert
+            </Button>
+            <Button 
+              onClick={handleEndSession} 
+              variant="secondary" 
+              className="w-full h-16 text-lg font-semibold"
+            >
+              <X className="mr-2 h-6 w-6" /> End Session
+            </Button>
+          </CardContent>
+        </Card>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-      </footer>
     </div>
   );
 }
