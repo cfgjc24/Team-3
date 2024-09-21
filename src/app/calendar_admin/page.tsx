@@ -8,13 +8,7 @@ const Schedule: React.FC = () => {
   const [selectedSlot, setSelectedSlot] = useState<{
     day: string;
     time: string;
-    clients: {
-      id: number;
-      name: string;
-      email: string;
-      startTime: string;
-      endTime: string;
-    }[];
+    clients: { id: number; name: string; email: string; startTime: string; endTime: string, assigned: boolean }[];
   } | null>(null);
   const [checkedClients, setCheckedClients] = useState<Set<number>>(new Set());
   const [clientData, setClientData] = useState<DataEvent[]>([]);
@@ -45,18 +39,13 @@ const Schedule: React.FC = () => {
     endTime: string;
     name: string;
     email: string;
+    assigned: boolean;
   };
 
   // State for storing the grid data
   const [gridData, setGridData] = useState<{
     [day: string]: {
-      [time: string]: {
-        id: number;
-        name: string;
-        email: string;
-        startTime: string;
-        endTime: string;
-      }[];
+      [time: string]: { id: number; name: string; email: string; startTime: string; endTime: string; assigned: boolean }[];
     };
   }>({});
 
@@ -84,18 +73,12 @@ const Schedule: React.FC = () => {
   const processGridData = (data: DataEvent[]) => {
     const newGridData: {
       [day: string]: {
-        [time: string]: {
-          id: number;
-          name: string;
-          email: string;
-          startTime: string;
-          endTime: string;
-        }[];
+        [time: string]: { id: number; name: string; email: string; startTime: string; endTime: string; assigned: boolean }[];
       };
     } = {};
 
     data.forEach((event) => {
-      const { id, day, startTime, endTime, name, email } = event;
+      const { id, day, startTime, endTime, name, email, assigned } = event;
       if (!newGridData[day]) {
         newGridData[day] = {};
       }
@@ -116,7 +99,7 @@ const Schedule: React.FC = () => {
           newGridData[day][time] = [];
         }
 
-        newGridData[day][time].push({ id, name, email, startTime, endTime });
+        newGridData[day][time].push({ id, name, email, startTime, endTime, assigned });
       }
     });
 
@@ -126,16 +109,21 @@ const Schedule: React.FC = () => {
   // Fetch client data from the server
   useEffect(() => {
     const fetchClientData = async () => {
-      try {
-        const response = await fetch("http://localhost:4000/clients"); // Ensure the endpoint matches your backend setup
+        try {
+        const response = await fetch('http://localhost:4000/clients'); // Ensure the endpoint matches your backend setup
         if (!response.ok) {
-          throw new Error("Failed to fetch client data");
+            throw new Error('Failed to fetch client data');
         }
         const data = await response.json();
         setClientData(data); // Store the fetched data in state
-      } catch (error) {
-        console.error("Error fetching client data:", error);
-      }
+
+        // Initialize removed clients with those already assigned
+        const initiallyRemoved = data.filter((client: DataEvent) => client.assigned === true);
+        setRemovedClients(initiallyRemoved);
+
+        } catch (error) {
+        console.error('Error fetching client data:', error);
+        }
     };
 
     fetchClientData();
@@ -186,7 +174,7 @@ const Schedule: React.FC = () => {
         return newGridData;
       });
 
-      // Track removed clients
+      // Track removed clients and update the removedClients list
       const removed = selectedSlot.clients
         .filter((client) => checkedClients.has(client.id))
         .map((client) => ({
@@ -202,8 +190,8 @@ const Schedule: React.FC = () => {
       setClientData(updatedClientData);
 
       setShowForm(false);
-    }
-  };
+    }}
+
 
   const getColorByCount = (count: number): string => {
     if (count === 0) return "transparent";
