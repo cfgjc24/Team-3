@@ -199,7 +199,7 @@ const Schedule: React.FC = () => {
                     onClick={() => handleButtonClick(day, time)}
                     disabled={count === 0}
                   >
-                    {count > 0 ? `${count} needed` : ''}
+                    {count > 0 ? `${count} clients` : ''}
                   </button>
                 );
               })}
