@@ -3,8 +3,11 @@
 
 # Problem Statement
 How might technology help assist and support Lodestar's in-field staff throughout the assignment of, preparation, and execution of in-home field visits and related tasks (timesheets, expense/mileage tracking, editing appointments)? With safety being of the utmost importance to Lodestar, how can technology specifically help ensure the safety of in-field providers as they visit client homes to provide care and services, without the companionship of another staff member? For this challenge, consider the following:
+
 • How this tool can enable in-field staff to learn about and "raise their hand" for open cases, rapidly access resources for their treatments, efficiently document the progress of their clients, and communicate with the program management team at Lodestar
+
 • How this tool may incorporate Electronic Visit Verification/GPS Locator solutions
+
 • How this tool may be accessible/used in high pressure situations or if a crisis arises
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
