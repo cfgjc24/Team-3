@@ -64,7 +64,7 @@ export default function AdminDashboard() {
             Users
           </Button>
 
-          <Link href="/calendar" passHref>
+          <Link href="/calendar_admin" passHref>
             <Button variant="ghost" className="w-full justify-start">
               <Calendar className="mr-2 h-4 w-4" />
               Calendar

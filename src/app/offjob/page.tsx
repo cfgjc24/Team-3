@@ -49,7 +49,7 @@ const quickLinks = [
   {
     id: 1,
     title: "Calendar",
-    url: "https://calendar.google.com",
+    url: "http://localhost:3001/calendar",
     icon: Calendar,
   },
   { id: 2, title: "Team Chat", url: "https://zoom.us/join", icon: Users },
