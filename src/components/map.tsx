@@ -27,11 +27,11 @@ const MapComponent: React.FC<MapComponentProps> = ({
   useEffect(() => {
     if (mapRef.current) {
       // Dynamically calculate center based on locations
-      console.log(locations)
-    //   const centerLng = locations.reduce((sum, loc) => sum + loc.longitude, 0) / locations.length;
-    //   const centerLat = locations.reduce((sum, loc) => sum + loc.latitude, 0) / locations.length;
-    const centerLng = -74.0060;    
-    const centerLat = 40.712776;
+      console.log(locations);
+      //   const centerLng = locations.reduce((sum, loc) => sum + loc.longitude, 0) / locations.length;
+      //   const centerLat = locations.reduce((sum, loc) => sum + loc.latitude, 0) / locations.length;
+      const centerLng = -74.006;
+      const centerLat = 40.712776;
       // Initialize the map
       // mapInstance.current = new maplibregl.Map({
       //   container: mapRef.current,
