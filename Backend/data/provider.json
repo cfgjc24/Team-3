@@ -8,7 +8,7 @@
     "availability": "Weekends",
     "location": "New York",
     "adminId": 22,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.712776,
       "longitude": -74.005974
@@ -23,7 +23,7 @@
     "availability": "24/7",
     "location": "Brooklyn",
     "adminId": 1,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.678178,
       "longitude": -73.944158
@@ -38,7 +38,7 @@
     "availability": "Monday-Friday",
     "location": "Queens",
     "adminId": 21,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.728224,
       "longitude": -73.794853
@@ -53,7 +53,7 @@
     "availability": "Weekends",
     "location": "Bronx",
     "adminId": 21,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.844782,
       "longitude": -73.864827
@@ -68,7 +68,7 @@
     "availability": "Weekends",
     "location": "Staten Island",
     "adminId": 40,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.579021,
       "longitude": -74.151535
@@ -83,7 +83,7 @@
     "availability": "Weekends",
     "location": "Jersey City",
     "adminId": 16,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.717754,
       "longitude": -74.043143
@@ -98,7 +98,7 @@
     "availability": "Weekends",
     "location": "Hoboken",
     "adminId": 43,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.743991,
       "longitude": -74.032363
@@ -113,7 +113,7 @@
     "availability": "24/7",
     "location": "Newark",
     "adminId": 10,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.735657,
       "longitude": -74.172367
@@ -128,7 +128,7 @@
     "availability": "Monday-Friday",
     "location": "Yonkers",
     "adminId": 17,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.931210,
       "longitude": -73.898747
@@ -143,7 +143,7 @@
     "availability": "Monday-Friday",
     "location": "White Plains",
     "adminId": 40,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 41.033986,
       "longitude": -73.762910
@@ -158,7 +158,7 @@
     "availability": "Monday-Friday",
     "location": "Hempstead",
     "adminId": 19,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.706213,
       "longitude": -73.618739
@@ -173,7 +173,7 @@
     "availability": "Weekends",
     "location": "New Rochelle",
     "adminId": 38,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.911491,
       "longitude": -73.782354
@@ -188,7 +188,7 @@
     "availability": "24/7",
     "location": "Elizabeth",
     "adminId": 50,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.663991,
       "longitude": -74.210700
@@ -203,7 +203,7 @@
     "availability": "Weekends",
     "location": "Paterson",
     "adminId": 50,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.916765,
       "longitude": -74.171811
@@ -218,7 +218,7 @@
     "availability": "Monday-Friday",
     "location": "Hackensack",
     "adminId": 42,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.885932,
       "longitude": -74.043473
@@ -233,7 +233,7 @@
     "availability": "Weekends",
     "location": "Bayonne",
     "adminId": 25,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.668714,
       "longitude": -74.114309
@@ -248,7 +248,7 @@
     "availability": "Weekends",
     "location": "Harrison",
     "adminId": 10,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.911488,
       "longitude": -73.724684
@@ -263,7 +263,7 @@
     "availability": "Monday-Friday",
     "location": "Union City",
     "adminId": 6,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.779545,
       "longitude": -74.023751
@@ -278,7 +278,7 @@
     "availability": "Monday-Friday",
     "location": "Passaic",
     "adminId": 18,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.856766,
       "longitude": -74.128476
@@ -293,7 +293,7 @@
     "availability": "Weekends",
     "location": "West New York",
     "adminId": 15,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.787878,
       "longitude": -74.014306
@@ -308,7 +308,7 @@
     "availability": "24/7",
     "location": "Fort Lee",
     "adminId": 12,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.850933,
       "longitude": -73.970138
@@ -323,7 +323,7 @@
     "availability": "Weekends",
     "location": "Teaneck",
     "adminId": 42,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.893168,
       "longitude": -74.011627
@@ -338,7 +338,7 @@
     "availability": "Monday-Friday",
     "location": "Tarrytown",
     "adminId": 12,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 41.076210,
       "longitude": -73.858475
@@ -353,7 +353,7 @@
     "availability": "24/7",
     "location": "Ridgewood",
     "adminId": 17,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.979997,
       "longitude": -74.116530
@@ -368,7 +368,7 @@
     "availability": "Weekends",
     "location": "Garden City",
     "adminId": 47,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.726770,
       "longitude": -73.634295
@@ -383,7 +383,7 @@
     "availability": "Weekends",
     "location": "Scarsdale",
     "adminId": 6,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 41.005097,
       "longitude": -73.784576
@@ -398,7 +398,7 @@
     "availability": "Weekends",
     "location": "Mount Vernon",
     "adminId": 19,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.912599,
       "longitude": -73.837078
@@ -413,7 +413,7 @@
     "availability": "24/7",
     "location": "Harrison",
     "adminId": 40,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.911488,
       "longitude": -73.724684
@@ -428,7 +428,7 @@
     "availability": "Weekends",
     "location": "Port Chester",
     "adminId": 23,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.994828,
       "longitude": -73.667918
@@ -443,7 +443,7 @@
     "availability": "24/7",
     "location": "Clifton",
     "adminId": 15,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.858433,
       "longitude": -74.163755
@@ -458,7 +458,7 @@
     "availability": "Weekends",
     "location": "New York",
     "adminId": 22,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.712776,
       "longitude": -74.005974
@@ -473,7 +473,7 @@
     "availability": "Weekends",
     "location": "Union City",
     "adminId": 1,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.779545,
       "longitude": -74.023751
@@ -488,7 +488,7 @@
     "availability": "Monday-Friday",
     "location": "Long Island City",
     "adminId": 29,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.744679,
       "longitude": -73.948542
@@ -503,7 +503,7 @@
     "availability": "Monday-Friday",
     "location": "Manhattan",
     "adminId": 29,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.783060,
       "longitude": -73.971249
@@ -518,7 +518,7 @@
     "availability": "Weekends",
     "location": "Flushing",
     "adminId": 12,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.767500,
       "longitude": -73.833079
@@ -533,7 +533,7 @@
     "availability": "Weekends",
     "location": "Staten Island",
     "adminId": 34,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.579021,
       "longitude": -74.151535
@@ -548,7 +548,7 @@
     "availability": "24/7",
     "location": "Bronx",
     "adminId": 37,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.844782,
       "longitude": -73.864827
@@ -563,7 +563,7 @@
     "availability": "Weekends",
     "location": "White Plains",
     "adminId": 3,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 41.033986,
       "longitude": -73.762910
@@ -578,7 +578,7 @@
     "availability": "Monday-Friday",
     "location": "Harlem",
     "adminId": 16,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.811550,
       "longitude": -73.946477
@@ -593,7 +593,7 @@
     "availability": "24/7",
     "location": "Manhattan",
     "adminId": 24,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.783060,
       "longitude": -73.971249
@@ -608,7 +608,7 @@
     "availability": "Monday-Friday",
     "location": "Brooklyn",
     "adminId": 35,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.678178,
       "longitude": -73.944158
@@ -623,7 +623,7 @@
     "availability": "Monday-Friday",
     "location": "Ridgewood",
     "adminId": 36,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.979997,
       "longitude": -74.116530
@@ -638,7 +638,7 @@
     "availability": "Weekends",
     "location": "Riverdale",
     "adminId": 44,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.891716,
       "longitude": -73.903213
@@ -653,7 +653,7 @@
     "availability": "24/7",
     "location": "Hoboken",
     "adminId": 31,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.743991,
       "longitude": -74.032363
@@ -668,7 +668,7 @@
     "availability": "Monday-Friday",
     "location": "Brooklyn",
     "adminId": 39,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.678178,
       "longitude": -73.944158
@@ -683,7 +683,7 @@
     "availability": "24/7",
     "location": "Jersey City",
     "adminId": 5,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.717754,
       "longitude": -74.043143
@@ -698,7 +698,7 @@
     "availability": "Monday-Friday",
     "location": "Garden City",
     "adminId": 49,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.726770,
       "longitude": -73.634295
@@ -713,7 +713,7 @@
     "availability": "Monday-Friday",
     "location": "Bayonne",
     "adminId": 47,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.668714,
       "longitude": -74.114309
@@ -728,7 +728,7 @@
     "availability": "Monday-Friday",
     "location": "Harlem",
     "adminId": 7,
-    "status": "open",
+    "checked-in": "open",
     "locationDetails": {
       "latitude": 40.811550,
       "longitude": -73.946477
@@ -743,7 +743,7 @@
     "availability": "Weekends",
     "location": "Newark",
     "adminId": 29,
-    "status": "closed",
+    "checked-in": "closed",
     "locationDetails": {
       "latitude": 40.735657,
       "longitude": -74.172367
