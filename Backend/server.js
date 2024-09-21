@@ -6,7 +6,7 @@ const {
   sessionNoteData,
   providerData,
   adminData,
-  clientData
+  clientData,
 } = require("./data/data"); // Import the JSON data
 
 const attemptSignIn = require("./functions/auth");

@@ -8,11 +8,12 @@
   border-radius: 8px;
   overflow: hidden;
   background-color: #f3f4f6;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
-body, .admin-dashboard {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body,
+.admin-dashboard {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
 }
 
@@ -78,7 +79,10 @@ body, .admin-dashboard {
   height: 50px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,7 +96,7 @@ body, .admin-dashboard {
 }
 
 .grid-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

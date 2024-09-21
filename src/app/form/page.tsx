@@ -24,12 +24,13 @@ export default function FormPage() {
               <CardTitle className="text-2xl font-bold">Forms ✏️</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
-              <Button 
-                onClick={showForm1} 
+              <Button
+                onClick={showForm1}
                 className="w-full h-16 text-lg font-semibold"
                 variant="default"
               >
-                <FileText className="mr-2 h-6 w-6" /> Employee Travel Expense Form
+                <FileText className="mr-2 h-6 w-6" /> Employee Travel Expense
+                Form
               </Button>
               <Button
                 onClick={showForm2}
@@ -38,9 +39,9 @@ export default function FormPage() {
               >
                 <ClipboardList className="mr-2 h-6 w-6" /> Provider Log
               </Button>
-              <Button 
-                onClick={showForm3} 
-                variant="default" 
+              <Button
+                onClick={showForm3}
+                variant="default"
                 className="w-full h-16 text-lg font-semibold"
               >
                 <ClipboardList className="mr-2 h-6 w-6" /> Flex Fund Log
@@ -49,11 +50,7 @@ export default function FormPage() {
           </Card>
         ) : (
           <div className="w-full max-w-2xl">
-            <Button 
-              onClick={resetForm}
-              variant="outline" 
-              className="mb-4"
-            >
+            <Button onClick={resetForm} variant="outline" className="mb-4">
               <X className="mr-2 h-4 w-4" /> Back to Forms
             </Button>
             {activeForm === "travelExpense" && <TravelExpenseForm />}
@@ -70,34 +67,64 @@ export default function FormPage() {
 function TravelExpenseForm() {
   return (
     <div className="bg-white p-6 shadow-lg rounded-lg max-w-2xl w-full">
-      <h1 className="text-2xl font-bold text-center mb-6">Employee Travel Expense Voucher</h1>
+      <h1 className="text-2xl font-bold text-center mb-6">
+        Employee Travel Expense Voucher
+      </h1>
       <div className="mb-4">
         <label className="block font-bold">Month:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter month" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter month"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Name:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter name" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter name"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">City:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter city" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter city"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Zip Code:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter zip code" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter zip code"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Travel From:</label>
-        <input type="text" className="border p-2 w-full" placeholder="From where" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="From where"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Travel To:</label>
-        <input type="text" className="border p-2 w-full" placeholder="To where" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="To where"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Miles:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Miles traveled" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Miles traveled"
+        />
       </div>
       <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 w-full">
         Submit
@@ -113,15 +140,27 @@ function ProviderLogForm() {
       <h1 className="text-2xl font-bold text-center mb-6">Provider Log</h1>
       <div className="mb-4">
         <label className="block font-bold">Billing Month/Year:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter billing month/year" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter billing month/year"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Child's Name:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter child's name" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter child's name"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Provider Name:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter provider name" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter provider name"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Service (Circle One):</label>
@@ -138,15 +177,27 @@ function ProviderLogForm() {
       </div>
       <div className="mb-4">
         <label className="block font-bold">Date of Service:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter service date" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter service date"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Time of Service:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter time of service" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter time of service"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Total Hours:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter total hours" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter total hours"
+        />
       </div>
       <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 w-full">
         Submit
@@ -162,31 +213,59 @@ function FlexFundForm() {
       <h1 className="text-2xl font-bold text-center mb-6">Flex Fund Log</h1>
       <div className="mb-4">
         <label className="block font-bold">Billing Date:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter billing date" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter billing date"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Child's Name:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter child's name" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter child's name"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Provider's Name:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter provider's name" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter provider's name"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Service Type:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter service type" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter service type"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Date of Receipt:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter receipt date" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter receipt date"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Store/Venue:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter store/venue" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter store/venue"
+        />
       </div>
       <div className="mb-4">
         <label className="block font-bold">Amount of Expense:</label>
-        <input type="text" className="border p-2 w-full" placeholder="Enter amount" />
+        <input
+          type="text"
+          className="border p-2 w-full"
+          placeholder="Enter amount"
+        />
       </div>
       <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 w-full">
         Submit

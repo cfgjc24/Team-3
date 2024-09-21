@@ -487,7 +487,7 @@ export default function AdminDashboard() {
                               {provider.checkedIn == "open" ? "Yes" : "No"}
                             </TableCell>
                           </TableRow>
-                        )
+                        ),
                       )
                     ) : (
                       <TableRow>

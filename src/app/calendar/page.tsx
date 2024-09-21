@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import './Calendar.css';
+import React, { useEffect, useState } from "react";
+import "./Calendar.css";
 
 const Schedule: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
@@ -10,19 +10,34 @@ const Schedule: React.FC = () => {
     day: string;
     count: number;
   } | null>(null);
-  const [userSlots, setUserSlots] = useState<{ day: string; time: string }[]>([]);
+  const [userSlots, setUserSlots] = useState<{ day: string; time: string }[]>(
+    [],
+  );
   const [clientData, setClientData] = useState<clientData[]>([]); // State to store fetched client data
   const [eventsData, setEventsData] = useState<clientData[]>([]); // State for processed client data
-  const [gridData, setGridData] = useState<{ [day: string]: { [timeIndex: number]: number } }>({});
+  const [gridData, setGridData] = useState<{
+    [day: string]: { [timeIndex: number]: number };
+  }>({});
 
   // Define time intervals
   const timeIntervals = [
-    '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM',
-    '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM',
+    "8:00 AM",
+    "9:00 AM",
+    "10:00 AM",
+    "11:00 AM",
+    "12:00 PM",
+    "1:00 PM",
+    "2:00 PM",
+    "3:00 PM",
+    "4:00 PM",
+    "5:00 PM",
+    "6:00 PM",
+    "7:00 PM",
+    "8:00 PM",
   ];
 
   // Define the days of the week with specific dates
-  const daysOfWeek = ['9/16', '9/17', '9/18', '9/19', '9/20', '9/21', '9/22'];
+  const daysOfWeek = ["9/16", "9/17", "9/18", "9/19", "9/20", "9/21", "9/22"];
 
   // Define types for client data
   type clientData = {
@@ -34,18 +49,18 @@ const Schedule: React.FC = () => {
 
   // Function to convert time strings into total minutes since midnight
   const timeToMinutes = (time: string | undefined): number => {
-    if (!time || typeof time !== 'string') {
-      console.error('Invalid time format:', time);
+    if (!time || typeof time !== "string") {
+      console.error("Invalid time format:", time);
       return 0; // Return 0 or handle the error appropriately
     }
-    const [timePart, period] = time.split(' ');
-    const [hoursStr, minutesStr] = timePart.split(':');
+    const [timePart, period] = time.split(" ");
+    const [hoursStr, minutesStr] = timePart.split(":");
     let hours = parseInt(hoursStr);
     const minutes = parseInt(minutesStr);
 
-    if (period === 'PM' && hours !== 12) {
+    if (period === "PM" && hours !== 12) {
       hours += 12;
-    } else if (period === 'AM' && hours === 12) {
+    } else if (period === "AM" && hours === 12) {
       hours = 0;
     }
 
@@ -56,14 +71,14 @@ const Schedule: React.FC = () => {
   useEffect(() => {
     const fetchClientData = async () => {
       try {
-        const response = await fetch('http://localhost:4000/clients'); // Ensure the endpoint matches your backend setup
+        const response = await fetch("http://localhost:4000/clients"); // Ensure the endpoint matches your backend setup
         if (!response.ok) {
-          throw new Error('Failed to fetch client data');
+          throw new Error("Failed to fetch client data");
         }
         const data = await response.json();
         setClientData(data); // Store the fetched data in state
       } catch (error) {
-        console.error('Error fetching client data:', error);
+        console.error("Error fetching client data:", error);
       }
     };
 
@@ -78,7 +93,7 @@ const Schedule: React.FC = () => {
   // Function to create gridData from eventsData
   const createGridData = (eventsData: clientData[]) => {
     const gridData: { [day: string]: { [timeIndex: number]: number } } = {};
-    console.log(gridData)
+    console.log(gridData);
     eventsData.forEach((event) => {
       const day = event.day;
       if (!gridData[day]) {
@@ -123,7 +138,10 @@ const Schedule: React.FC = () => {
         const newGridData = { ...prevGridData };
         if (newGridData[day] && newGridData[day][timeIndex] !== undefined) {
           newGridData[day] = { ...newGridData[day] };
-          newGridData[day][timeIndex] = Math.max(0, newGridData[day][timeIndex] - 1);
+          newGridData[day][timeIndex] = Math.max(
+            0,
+            newGridData[day][timeIndex] - 1,
+          );
         }
         return newGridData;
       });
@@ -141,11 +159,11 @@ const Schedule: React.FC = () => {
 
   // Function to determine the color based on the number of overlapping events
   const getColorByCount = (count: number): string => {
-    if (count === 0) return 'transparent';
-    if (count === 1) return '#D6E4FF'; 
-    if (count === 2) return '#A8C7FF';
-    if (count === 3) return '#7AA9FF'; 
-    return '#5b91f5'; 
+    if (count === 0) return "transparent";
+    if (count === 1) return "#D6E4FF";
+    if (count === 2) return "#A8C7FF";
+    if (count === 3) return "#7AA9FF";
+    return "#5b91f5";
   };
 
   return (
@@ -172,18 +190,18 @@ const Schedule: React.FC = () => {
 
                 return (
                   <button
-                    className={`grid-button ${isSlotSelected(day, time) ? 'selected-slot' : ''}`}
+                    className={`grid-button ${isSlotSelected(day, time) ? "selected-slot" : ""}`}
                     key={idx}
                     style={{
                       backgroundColor: isSlotSelected(day, time)
-                        ? '#333'
+                        ? "#333"
                         : getColorByCount(eventCount),
-                      color: isSlotSelected(day, time) ? '#ffffff' : '#111827',
+                      color: isSlotSelected(day, time) ? "#ffffff" : "#111827",
                     }}
                     onClick={() => handleButtonClick(day, time, eventCount)}
                     disabled={isSlotSelected(day, time)}
                   >
-                    {eventCount > 0 ? `${eventCount} needed` : ''}
+                    {eventCount > 0 ? `${eventCount} needed` : ""}
                   </button>
                 );
               })}
@@ -197,12 +215,17 @@ const Schedule: React.FC = () => {
               <h3 className="modal-title">
                 {`${selectedTime.count} people needed at ${selectedTime.time} on ${selectedTime.day}`}
               </h3>
-              <p className="modal-text">Do you want to sign up for this time?</p>
+              <p className="modal-text">
+                Do you want to sign up for this time?
+              </p>
               <div className="modal-actions">
                 <button className="confirm-button" onClick={handleSignUp}>
                   Yes, Sign Me Up
                 </button>
-                <button className="cancel-button" onClick={() => setShowForm(false)}>
+                <button
+                  className="cancel-button"
+                  onClick={() => setShowForm(false)}
+                >
                   Cancel
                 </button>
               </div>

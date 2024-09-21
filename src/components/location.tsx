@@ -41,7 +41,7 @@ const useGeolocation = () => {
       {
         enableHighAccuracy: true,
         maximumAge: 60,
-      }
+      },
     );
 
     return () => navigator.geolocation.clearWatch(watchID);
