@@ -58,12 +58,14 @@ export default function Home() {
       <main className="flex-grow flex flex-col gap-6 items-center justify-center">
         <Card className="w-full max-w-md shadow-lg">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold">Provider Toolkit 🛠️</CardTitle>
+            <CardTitle className="text-2xl font-bold">
+              Provider Toolkit 🛠️
+            </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
             <LocationComponent onLocationUpdate={handleLocationUpdate} />
-            <Button 
-              onClick={handleRecordMeeting} 
+            <Button
+              onClick={handleRecordMeeting}
               className="w-full h-16 text-lg font-semibold"
               variant="default"
             >

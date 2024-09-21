@@ -7,8 +7,13 @@ const {
   providerData,
   adminData,
 } = require("./data/data"); // Import the JSON data
-const app = express();
 
+const attemptSignIn = require("./functions/auth");
+const app = express();
+const cors = require("cors");
+
+app.use(cors());
+app.use(express.json());
 app.get("/", (req, res) => {
   res.send(caseData);
 });
@@ -78,6 +83,13 @@ app.get("/session_notes/provider/:providerId", (req, res) => {
       .status(404)
       .json({ message: "No session notes found for this provider" }); // If no session notes are found, return a 404 error
   }
+});
+
+app.post("/sign-in", (req, res) => {
+  const data = req.body;
+  console.log(data);
+  const resData = attemptSignIn(data);
+  res.status(200).json(resData);
 });
 
 const PORT = process.env.PORT || 4000;
