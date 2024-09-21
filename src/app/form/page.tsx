@@ -1,6 +1,10 @@
-"use client"; // Marks this as a Client Component
+"use client";
 
+import { AlertCircle } from "lucide-react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { FileText, X, ClipboardList } from "lucide-react";
 
 export default function FormPage() {
   const [activeForm, setActiveForm] = useState(""); // State to manage active form
@@ -9,37 +13,55 @@ export default function FormPage() {
   const showForm1 = () => setActiveForm("travelExpense");
   const showForm2 = () => setActiveForm("providerLog");
   const showForm3 = () => setActiveForm("flexFund");
+  const resetForm = () => setActiveForm(""); // New handler to reset to form selection
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 bg-gray-100">
-      <div className="space-x-4 mb-8">
-        {/* Black buttons to switch between forms */}
-        <button
-          className="bg-black text-white py-2 px-4 rounded hover:bg-gray-800"
-          onClick={showForm1}
-        >
-          Employee Travel Expense Voucher
-        </button>
-
-        <button
-          className="bg-black text-white py-2 px-4 rounded hover:bg-gray-800"
-          onClick={showForm2}
-        >
-          Provider Log
-        </button>
-
-        <button
-          className="bg-black text-white py-2 px-4 rounded hover:bg-gray-800"
-          onClick={showForm3}
-        >
-          Flex Fund Log
-        </button>
-      </div>
-
-      {/* Conditionally render the forms based on which button was clicked */}
-      {activeForm === "travelExpense" && <TravelExpenseForm />}
-      {activeForm === "providerLog" && <ProviderLogForm />}
-      {activeForm === "flexFund" && <FlexFundForm />}
+    <div className="flex flex-col min-h-screen p-4 sm:p-6 font-sans bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <main className="flex-grow flex flex-col gap-6 items-center justify-center">
+        {activeForm === "" ? (
+          <Card className="w-full max-w-md shadow-lg">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl font-bold">Forms ✏️</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4">
+              <Button 
+                onClick={showForm1} 
+                className="w-full h-16 text-lg font-semibold"
+                variant="default"
+              >
+                <FileText className="mr-2 h-6 w-6" /> Form 1
+              </Button>
+              <Button
+                onClick={showForm2}
+                variant="default"
+                className="w-full h-16 text-lg font-semibold"
+              >
+                <ClipboardList className="mr-2 h-6 w-6" /> Form 2
+              </Button>
+              <Button 
+                onClick={showForm3} 
+                variant="default" 
+                className="w-full h-16 text-lg font-semibold"
+              >
+                <ClipboardList className="mr-2 h-6 w-6" /> Form 2
+              </Button>
+            </CardContent>
+          </Card>
+        ) : (
+          <div className="w-full max-w-2xl">
+            <Button 
+              onClick={resetForm}
+              variant="outline" 
+              className="mb-4"
+            >
+              <X className="mr-2 h-4 w-4" /> Back to Forms
+            </Button>
+            {activeForm === "travelExpense" && <TravelExpenseForm />}
+            {activeForm === "providerLog" && <ProviderLogForm />}
+            {activeForm === "flexFund" && <FlexFundForm />}
+          </div>
+        )}
+      </main>
     </div>
   );
 }
