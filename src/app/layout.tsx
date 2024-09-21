@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/nextjs";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,10 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
       <html lang="en">
         <body>{children}</body>
       </html>
-    </ClerkProvider>
   );
 }
