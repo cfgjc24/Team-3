@@ -1,6 +1,5 @@
 'use client'
 import Image from "next/image";
-import LocationComponent from "../components/location";
 
 export default function Home() {
   const handleRecordMeeting = () => {
