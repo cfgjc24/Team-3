@@ -36,6 +36,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Link from "next/link";
+import MapComponent from "@/components/map";
 
 export default function AdminDashboard() {
   return (
@@ -354,6 +355,13 @@ export default function AdminDashboard() {
                     ))}
                   </TableBody>
                 </Table>
+
+                <MapComponent
+                  locations={[
+                    { name: "John", longitude: 12.550343, latitude: 55.667 },
+                    { name: "Lewis", longitude: 17.338289, latitude: 88.282 },
+                  ]}
+                />
               </ScrollArea>
             </CardContent>
           </Card>
