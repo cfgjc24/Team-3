@@ -12,6 +12,7 @@ const Schedule: React.FC = () => {
   } | null>(null);
   const [checkedClients, setCheckedClients] = useState<Set<number>>(new Set());
   const [clientData, setClientData] = useState<DataEvent[]>([]);
+  const [removedClients, setRemovedClients] = useState<DataEvent[]>([]); // State to track removed clients
 
   const timeIntervals = [
     '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM',
@@ -149,6 +150,15 @@ const Schedule: React.FC = () => {
         return newGridData;
       });
 
+      // Track removed clients
+      const removed = selectedSlot.clients.filter((client) =>
+        checkedClients.has(client.id)
+      ).map(client => ({
+        ...client,
+        day: selectedSlot.day, // Add the missing 'day' property
+      }));
+      setRemovedClients((prev) => [...prev, ...removed]);
+
       // Update clientData to remove clients only from specific time slots
       const updatedClientData = clientData.filter(
         (event) => !checkedClients.has(event.id)
@@ -249,6 +259,33 @@ const Schedule: React.FC = () => {
           </div>
         )}
       </div>
+      <div className="admin-dashboard">
+      {/* History of Removed Clients */}
+      
+          <div className="history-section">
+            <h1>Removed Clients History</h1>
+            <table className="client-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Start</th>
+                  <th>End</th>
+                </tr>
+              </thead>
+              <tbody>
+                {removedClients.map((client, index) => (
+                  <tr key={index}>
+                    <td>{client.name}</td>
+                    <td>{client.email}</td>
+                    <td>{client.startTime}</td>
+                    <td>{client.endTime}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
     </div>
   );
 };
