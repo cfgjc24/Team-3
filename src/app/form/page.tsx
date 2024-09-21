@@ -2,16 +2,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Form1() {
   const router = useRouter();
-  const [formData, setFormData] = useState({ /* form fields */ });
+  const [formData, setFormData] = useState({
+    /* form fields */
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

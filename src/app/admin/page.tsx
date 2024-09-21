@@ -1,9 +1,22 @@
-"use client"
+"use client";
 
-import React from "react"
-import { Bell, LayoutDashboard, Users, Settings, LogOut, Calendar } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import React from "react";
+import {
+  Bell,
+  LayoutDashboard,
+  Users,
+  Settings,
+  LogOut,
+  Calendar,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,9 +24,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { ScrollArea } from "@/components/ui/scroll-area"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Table,
   TableBody,
@@ -21,8 +34,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import Link from "next/link"
+} from "@/components/ui/table";
+import Link from "next/link";
 
 export default function AdminDashboard() {
   return (
@@ -69,12 +82,15 @@ export default function AdminDashboard() {
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <Button
+                  variant="ghost"
+                  className="relative h-8 w-8 rounded-full"
+                >
                   <img
                     className="rounded-full"
                     src="/api/placeholder/100/100"
                     alt="User avatar"
-                    style={{width: "32px", height: "32px"}}
+                    style={{ width: "32px", height: "32px" }}
                   />
                 </Button>
               </DropdownMenuTrigger>
@@ -148,7 +164,9 @@ export default function AdminDashboard() {
                       <TableRow key={i}>
                         <TableCell>Customer {i + 1}</TableCell>
                         <TableCell>Product {i + 1}</TableCell>
-                        <TableCell>${(Math.random() * 1000).toFixed(2)}</TableCell>
+                        <TableCell>
+                          ${(Math.random() * 1000).toFixed(2)}
+                        </TableCell>
                         <TableCell>{new Date().toLocaleDateString()}</TableCell>
                       </TableRow>
                     ))}
@@ -160,5 +178,5 @@ export default function AdminDashboard() {
         </div>
       </main>
     </div>
-  )
+  );
 }

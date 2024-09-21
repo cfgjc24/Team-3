@@ -40,7 +40,7 @@ const useGeolocation = () => {
       {
         enableHighAccuracy: true,
         maximumAge: 60,
-      }
+      },
     );
 
     return () => navigator.geolocation.clearWatch(watchID);
@@ -65,7 +65,8 @@ const useReverseGeocoding = (location: Location | null) => {
         const data = await response.json();
 
         if (data.features && data.features.length > 0) {
-          const { country, state, city, street, postcode } = data.features[0].properties;
+          const { country, state, city, street, postcode } =
+            data.features[0].properties;
           setAddress({ country, state, city, street, postcode });
         } else {
           setError("No address found for these coordinates.");
@@ -84,19 +85,25 @@ const useReverseGeocoding = (location: Location | null) => {
 const LocationDisplay = ({ location }: { location: Location }) => (
   <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
     <MapPin className="h-4 w-4" />
-    <span>Lat: {location.latitude.toFixed(4)}, Lon: {location.longitude.toFixed(4)}</span>
+    <span>
+      Lat: {location.latitude.toFixed(4)}, Lon: {location.longitude.toFixed(4)}
+    </span>
   </div>
 );
 
 const AddressDisplay = ({ address }: { address: Address }) => (
   <div className="mt-2 text-sm text-gray-600 dark:text-gray-300">
     <p>{address.street}</p>
-    <p>{address.city}, {address.state} {address.postcode}</p>
+    <p>
+      {address.city}, {address.state} {address.postcode}
+    </p>
     <p>{address.country}</p>
   </div>
 );
 
-export default function LocationComponent({ onLocationUpdate }: LocationComponentProps) {
+export default function LocationComponent({
+  onLocationUpdate,
+}: LocationComponentProps) {
   const { location, error: locationError } = useGeolocation();
   const { address, error: addressError } = useReverseGeocoding(location);
 
@@ -110,7 +117,9 @@ export default function LocationComponent({ onLocationUpdate }: LocationComponen
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="text-lg font-semibold">Location Information</CardTitle>
+        <CardTitle className="text-lg font-semibold">
+          Location Information
+        </CardTitle>
       </CardHeader>
       <CardContent>
         {locationError ? (
