@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Jessica Simpson",
+    "email": "jessicas@gmail.com",
+    "password": "&5M2#hpF!K",
+    "phone": "(538)-321-2735"
+  },
+  {
+    "id": 2,
+    "name": "Bart Simpson",
+    "email": "gcollins@example.net",
+    "password": "j5VaYrI&%h",
+    "phone": "270-867-9155"
+  }
+]
