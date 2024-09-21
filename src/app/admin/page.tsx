@@ -112,7 +112,8 @@ export default function AdminDashboard() {
         <nav className="space-y-2 p-4">
           <Button variant="ghost" className="w-full justify-start">
             <LayoutDashboard
-              className="mr-2 h-4 w-4 text-2xl font-semibold"
+              className="mr-2 h-4 w-4 text-l "
+              // className="mr-2 h-6 w-4 text-4xl font-bold k"
               style={{ color: "#5b91f5" }}
             />
             Dashboard

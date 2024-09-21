@@ -59,7 +59,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
       });
     }
 
-    // Cleanup on unmount
+    // Cleanup on unmountdash
     return () => {
       if (mapInstance.current) {
         mapInstance.current.remove();
