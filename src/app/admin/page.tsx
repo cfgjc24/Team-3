@@ -1,9 +1,22 @@
-"use client"
+"use client";
 
-import React from "react"
-import { Bell, LayoutDashboard, Users, Settings, LogOut, Calendar } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import React from "react";
+import {
+  Bell,
+  LayoutDashboard,
+  Users,
+  Settings,
+  LogOut,
+  Calendar,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,9 +24,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { ScrollArea } from "@/components/ui/scroll-area"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Table,
   TableBody,
@@ -21,8 +34,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import Link from "next/link"
+} from "@/components/ui/table";
+import Link from "next/link";
 
 export default function AdminDashboard() {
   return (
@@ -69,12 +82,15 @@ export default function AdminDashboard() {
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <Button
+                  variant="ghost"
+                  className="relative h-8 w-8 rounded-full"
+                >
                   <img
                     className="rounded-full"
                     src="/api/placeholder/100/100"
                     alt="User avatar"
-                    style={{width: "32px", height: "32px"}}
+                    style={{ width: "32px", height: "32px" }}
                   />
                 </Button>
               </DropdownMenuTrigger>
@@ -102,11 +118,16 @@ export default function AdminDashboard() {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Total Revenue
+                <CardTitle className="text-sm font-bold flex flex-col items-center text-center w-full">
+                  Current Client Base
                 </CardTitle>
+
+                {/* <CardTitle className="text-sm font-medium">
+                  Clients on the wl
+                </CardTitle> */}
+
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns=""
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -119,12 +140,60 @@ export default function AdminDashboard() {
                 </svg>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">$45,231.89</div>
-                <p className="text-xs text-muted-foreground">
-                  +20.1% from last month
+                <div className="text-2xl font-bold flex flex-col items-center text-center text-blue-600">
+                  179 Current Clients
+                </div>
+                <p className="text-xs text-muted-foreground flex flex-col items-center text-center">
+                  +15% from last month
                 </p>
+
+                {/*
+               <div className="text-2xl font-bold">179 Current Clients</div>
+                <p className="text-xs text-muted-foreground">
+                  +15% from last month
+                </p>
+                    */}
               </CardContent>
             </Card>
+
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">
+                  Current Waitlist Amount
+                </CardTitle>
+
+                {/* <CardTitle className="text-sm font-medium">
+                  Clients on the 
+                </CardTitle> */}
+
+                <svg
+                  xmlns=""
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  className="h-4 w-4 text-muted-foreground"
+                >
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg>
+              </CardHeader>
+              <CardContent className="flex flex-col items-center text-center">
+                <div className="text-2xl font-bold">50 On Hold</div>
+                <p className="text-xs text-muted-foreground ">
+                  +5% from last month
+                </p>
+
+                {/*
+               <div className="text-2xl font-bold">179 Current Clients</div>
+                <p className="text-xs text-muted-foreground">
+                  +15% from last month
+                </p>
+                    */}
+              </CardContent>
+            </Card>
+
             {/* ... (other cards remain unchanged) ... */}
           </div>
           <Card className="col-span-4">
@@ -148,7 +217,9 @@ export default function AdminDashboard() {
                       <TableRow key={i}>
                         <TableCell>Customer {i + 1}</TableCell>
                         <TableCell>Product {i + 1}</TableCell>
-                        <TableCell>${(Math.random() * 1000).toFixed(2)}</TableCell>
+                        <TableCell>
+                          ${(Math.random() * 1000).toFixed(2)}
+                        </TableCell>
                         <TableCell>{new Date().toLocaleDateString()}</TableCell>
                       </TableRow>
                     ))}
@@ -160,5 +231,5 @@ export default function AdminDashboard() {
         </div>
       </main>
     </div>
-  )
+  );
 }
