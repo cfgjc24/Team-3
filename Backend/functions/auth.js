@@ -24,7 +24,7 @@ function attemptSignIn(data) {
         .createHash("sha256") // Specify the hashing algorithm, e.g., 'sha256'
         .update(admin.password) // The data you want to hash
         .digest("hex");
-      return hashedPassword === hashedPasswordTwo;
+      return admin ? hashedPassword === hashedPasswordTwo : null;
     }
     return false;
   } else if (userType === "provider") {
@@ -35,7 +35,7 @@ function attemptSignIn(data) {
         .update(provider.password) // The data you want to hash
         .digest("hex");
     }
-    return hashedPassword === hashedPasswordTwo;
+    return provider ? hashedPassword === hashedPasswordTwo : null;
   }
 
   return "failed";

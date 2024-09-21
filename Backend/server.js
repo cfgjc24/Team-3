@@ -15,65 +15,70 @@ app.get("/", (req, res) => {
 
 // Route to get all providers
 app.get("/providers", (req, res) => {
-    res.json(providerData);
-  });
-  
-  // Route to get a specific provider by ID
-  app.get("/providers/:id", (req, res) => {
-    const providerId = parseInt(req.params.id); // Get the provider ID from the request parameters
-    const provider = providerData.find((provider) => provider.id === providerId); // Find the provider by ID
-  
-    if (provider) {
-      res.json(provider); // If provider is found, return the provider data
-    } else {
-      res.status(404).json({ message: "Provider not found" }); // If provider is not found, return a 404 error
-    }
-  });
+  res.json(providerData);
+});
 
-  // Route to get all cases by provider ID
+// Route to get a specific provider by ID
+app.get("/providers/:id", (req, res) => {
+  const providerId = parseInt(req.params.id); // Get the provider ID from the request parameters
+  const provider = providerData.find((provider) => provider.id === providerId); // Find the provider by ID
+
+  if (provider) {
+    res.json(provider); // If provider is found, return the provider data
+  } else {
+    res.status(404).json({ message: "Provider not found" }); // If provider is not found, return a 404 error
+  }
+});
+
+// Route to get all cases by provider ID
 app.get("/cases/provider/:providerId", (req, res) => {
-    const providerId = parseInt(req.params.providerId); // Get the provider ID from the request parameters
-    const cases = caseData.filter((caseItem) => caseItem.providerId === providerId); // Filter cases by provider ID
-  
-    if (cases.length > 0) {
-      res.json(cases); // If cases are found, return the list of cases
-    } else {
-      res.status(404).json({ message: "No cases found for this provider" }); // If no cases are found, return a 404 error
-    }
-  });
+  const providerId = parseInt(req.params.providerId); // Get the provider ID from the request parameters
+  const cases = caseData.filter(
+    (caseItem) => caseItem.providerId === providerId,
+  ); // Filter cases by provider ID
 
-  // Route to get all cases with status "OPEN" by provider ID
+  if (cases.length > 0) {
+    res.json(cases); // If cases are found, return the list of cases
+  } else {
+    res.status(404).json({ message: "No cases found for this provider" }); // If no cases are found, return a 404 error
+  }
+});
+
+// Route to get all cases with status "OPEN" by provider ID
 app.get("/cases/open/provider/:providerId", (req, res) => {
-    const providerId = parseInt(req.params.providerId); // Get the provider ID from the request parameters
-    const openCases = caseData.filter(
-      (caseItem) => caseItem.providerId === providerId && caseItem.status === "OPEN"
-    ); // Filter cases by provider ID and status "OPEN"
-  
-    if (openCases.length > 0) {
-      res.json(openCases); // If open cases are found, return the list of open cases
-    } else {
-      res.status(404).json({ message: "No open cases found for this provider" }); // If no open cases are found, return a 404 error
-    }
-  });
+  const providerId = parseInt(req.params.providerId); // Get the provider ID from the request parameters
+  const openCases = caseData.filter(
+    (caseItem) =>
+      caseItem.providerId === providerId && caseItem.status === "OPEN",
+  ); // Filter cases by provider ID and status "OPEN"
 
-  // Route to get all session notes
+  if (openCases.length > 0) {
+    res.json(openCases); // If open cases are found, return the list of open cases
+  } else {
+    res.status(404).json({ message: "No open cases found for this provider" }); // If no open cases are found, return a 404 error
+  }
+});
+
+// Route to get all session notes
 app.get("/session_notes", (req, res) => {
-    res.json(sessionNoteData);
-  });
+  res.json(sessionNoteData);
+});
 
-  // Route to get all session notes by provider ID
+// Route to get all session notes by provider ID
 app.get("/session_notes/provider/:providerId", (req, res) => {
-    const providerId = parseInt(req.params.providerId); // Get the provider ID from the request parameters
-    const sessionNotes = sessionNoteData.filter(
-      (note) => note.providerId === providerId
-    ); // Filter session notes by provider ID
-  
-    if (sessionNotes.length > 0) {
-      res.json(sessionNotes); // If session notes are found, return the list of notes
-    } else {
-      res.status(404).json({ message: "No session notes found for this provider" }); // If no session notes are found, return a 404 error
-    }
-  });
+  const providerId = parseInt(req.params.providerId); // Get the provider ID from the request parameters
+  const sessionNotes = sessionNoteData.filter(
+    (note) => note.providerId === providerId,
+  ); // Filter session notes by provider ID
+
+  if (sessionNotes.length > 0) {
+    res.json(sessionNotes); // If session notes are found, return the list of notes
+  } else {
+    res
+      .status(404)
+      .json({ message: "No session notes found for this provider" }); // If no session notes are found, return a 404 error
+  }
+});
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
