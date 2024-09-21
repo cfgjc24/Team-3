@@ -134,7 +134,7 @@ export default function LocationComponent({ onLocationUpdate }: LocationComponen
             ) : (
               <AddressDisplay address={address} />
             )}
-            <MapComponent longitude={location.longitude} latitude={location.latitude} zoom={13} />
+            <MapComponent locations= {[{ name: "", longitude: location.longitude, latitude: location.latitude }]} />
           </>
         )}
       </CardContent>

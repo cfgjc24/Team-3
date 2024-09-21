@@ -359,7 +359,7 @@ export default function AdminDashboard() {
                 <MapComponent
                   locations={[
                     { name: "John", longitude: 12.550343, latitude: 55.667 },
-                    { name: "Lewis", longitude: 17.338289, latitude: 88.282 },
+                    { name: "Lewis", longitude: 12.338289, latitude: 55.282 },
                   ]}
                 />
               </ScrollArea>
