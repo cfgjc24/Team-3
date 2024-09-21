@@ -69,6 +69,13 @@ export default function Home() {
             >
               <FileText className="mr-2 h-6 w-6" /> Record Meeting
             </Button>
+            <Button
+              onClick={handleSignForm}
+              variant="default"
+              className="w-full h-16 text-lg font-semibold"
+            >
+              <ClipboardList className="mr-2 h-6 w-6" /> Sign Form
+            </Button>
             <Button 
               onClick={handleEmergencyAlert} 
               variant="destructive" 
@@ -76,13 +83,6 @@ export default function Home() {
               disabled={alertSent}
             >
               <AlertCircle className="mr-2 h-6 w-6" /> Emergency Alert
-            </Button>
-            <Button
-              onClick={handleSignForm}
-              variant="secondary"
-              className="w-full h-16 text-lg font-semibold"
-            >
-              <ClipboardList className="mr-2 h-6 w-6" /> Sign Form
             </Button>
             <Button 
               onClick={handleEndSession} 
