@@ -21,6 +21,7 @@ const ProviderLoginForm = () => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event: React.FormEvent) => {
+    router.push("/offjob");
     event.preventDefault();
 
     // Make sure email and password are available
@@ -46,7 +47,7 @@ const ProviderLoginForm = () => {
       console.log(responseData);
 
       if (responseData) {
-        router.push("/admin");
+        router.push("/offjob");
       }
     } catch (error) {
       console.error("Error signing in:", error);

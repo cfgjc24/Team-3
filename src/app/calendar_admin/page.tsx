@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import './Calendar.css';
+import React, { useState, useEffect } from "react";
+import "./Calendar.css";
 
 const Schedule: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
@@ -15,11 +15,22 @@ const Schedule: React.FC = () => {
   const [removedClients, setRemovedClients] = useState<DataEvent[]>([]); // State to track removed clients
 
   const timeIntervals = [
-    '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM',
-    '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM',
+    "8:00 AM",
+    "9:00 AM",
+    "10:00 AM",
+    "11:00 AM",
+    "12:00 PM",
+    "1:00 PM",
+    "2:00 PM",
+    "3:00 PM",
+    "4:00 PM",
+    "5:00 PM",
+    "6:00 PM",
+    "7:00 PM",
+    "8:00 PM",
   ];
 
-  const daysOfWeek = ['9/16', '9/17', '9/18', '9/19', '9/20', '9/21', '9/22'];
+  const daysOfWeek = ["9/16", "9/17", "9/18", "9/19", "9/20", "9/21", "9/22"];
 
   type DataEvent = {
     id: number;
@@ -40,18 +51,18 @@ const Schedule: React.FC = () => {
 
   // Function to convert time strings into total minutes since midnight
   const timeToMinutes = (time: string | undefined): number => {
-    if (!time || typeof time !== 'string') {
-      console.error('Invalid time format:', time);
+    if (!time || typeof time !== "string") {
+      console.error("Invalid time format:", time);
       return 0; // Return 0 or handle the error appropriately
     }
-    const [timePart, period] = time.split(' ');
-    const [hoursStr, minutesStr] = timePart.split(':');
+    const [timePart, period] = time.split(" ");
+    const [hoursStr, minutesStr] = timePart.split(":");
     let hours = parseInt(hoursStr);
     const minutes = parseInt(minutesStr);
 
-    if (period === 'PM' && hours !== 12) {
+    if (period === "PM" && hours !== 12) {
       hours += 12;
-    } else if (period === 'AM' && hours === 12) {
+    } else if (period === "AM" && hours === 12) {
       hours = 0;
     }
 
@@ -74,8 +85,12 @@ const Schedule: React.FC = () => {
 
       const startMinutes = timeToMinutes(startTime);
       const endMinutes = timeToMinutes(endTime);
-      const startIndex = timeIntervals.findIndex((time) => timeToMinutes(time) >= startMinutes);
-      const endIndex = timeIntervals.findIndex((time) => timeToMinutes(time) >= endMinutes);
+      const startIndex = timeIntervals.findIndex(
+        (time) => timeToMinutes(time) >= startMinutes,
+      );
+      const endIndex = timeIntervals.findIndex(
+        (time) => timeToMinutes(time) >= endMinutes,
+      );
 
       // Loop through each time slot covered by the event and create individual slot entries
       for (let i = startIndex; i <= endIndex && i < timeIntervals.length; i++) {
@@ -144,13 +159,16 @@ const Schedule: React.FC = () => {
   const handleRemoveClients = () => {
     if (selectedSlot) {
       const updatedClients = selectedSlot.clients.filter(
-        (client) => !checkedClients.has(client.id)
+        (client) => !checkedClients.has(client.id),
       );
 
       // Update gridData by removing selected clients
       setGridData((prevGridData) => {
         const newGridData = { ...prevGridData };
-        if (newGridData[selectedSlot.day] && newGridData[selectedSlot.day][selectedSlot.time]) {
+        if (
+          newGridData[selectedSlot.day] &&
+          newGridData[selectedSlot.day][selectedSlot.time]
+        ) {
           newGridData[selectedSlot.day][selectedSlot.time] = updatedClients;
         }
         return newGridData;
@@ -163,12 +181,11 @@ const Schedule: React.FC = () => {
           ...client,
           day: selectedSlot.day, // Add the missing 'day' property
         }));
-
       setRemovedClients((prev) => [...prev, ...removed]);
 
       // Update clientData to remove clients only from specific time slots
       const updatedClientData = clientData.filter(
-        (event) => !checkedClients.has(event.id)
+        (event) => !checkedClients.has(event.id),
       );
       setClientData(updatedClientData);
 
@@ -177,11 +194,11 @@ const Schedule: React.FC = () => {
 
 
   const getColorByCount = (count: number): string => {
-    if (count === 0) return 'transparent';
-    if (count === 1) return '#D6E4FF'; 
-    if (count === 2) return '#A8C7FF';
-    if (count === 3) return '#7AA9FF'; 
-    return '#5b91f5'; 
+    if (count === 0) return "transparent";
+    if (count === 1) return "#D6E4FF";
+    if (count === 2) return "#A8C7FF";
+    if (count === 3) return "#7AA9FF";
+    return "#5b91f5";
   };
 
   return (
@@ -216,7 +233,7 @@ const Schedule: React.FC = () => {
                     onClick={() => handleButtonClick(day, time)}
                     disabled={count === 0}
                   >
-                    {count > 0 ? `${count} clients` : ''}
+                    {count > 0 ? `${count} clients` : ""}
                   </button>
                 );
               })}
@@ -259,7 +276,10 @@ const Schedule: React.FC = () => {
               <button className="remove-button" onClick={handleRemoveClients}>
                 Remove Selected Clients
               </button>
-              <button className="close-button" onClick={() => setShowForm(false)}>
+              <button
+                className="close-button"
+                onClick={() => setShowForm(false)}
+              >
                 Close
               </button>
             </div>
@@ -267,31 +287,32 @@ const Schedule: React.FC = () => {
         )}
       </div>
       <div className="admin-dashboard">
-      {/* History of Removed Clients */}
-          <div className="history-section">
-            <h1>Removed Clients History</h1>
-            <table className="client-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Start</th>
-                  <th>End</th>
+        {/* History of Removed Clients */}
+
+        <div className="history-section">
+          <h1>Removed Clients History</h1>
+          <table className="client-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Start</th>
+                <th>End</th>
+              </tr>
+            </thead>
+            <tbody>
+              {removedClients.map((client, index) => (
+                <tr key={index}>
+                  <td>{client.name}</td>
+                  <td>{client.email}</td>
+                  <td>{client.startTime}</td>
+                  <td>{client.endTime}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {removedClients.map((client, index) => (
-                  <tr key={index}>
-                    <td>{client.name}</td>
-                    <td>{client.email}</td>
-                    <td>{client.startTime}</td>
-                    <td>{client.endTime}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
   );
 };

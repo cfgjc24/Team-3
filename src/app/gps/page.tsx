@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
 import { useState } from "react";
-import Link from 'next/link';
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
@@ -28,7 +28,6 @@ export default function GPSPage() {
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
             <LocationComponent onLocationUpdate={handleLocationUpdate} />
-           
           </CardContent>
         </Card>
       </main>

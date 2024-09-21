@@ -40,6 +40,7 @@ import MapComponent from "@/components/map";
 
 export default function AdminDashboard() {
   const [data, setData] = useState<any | null>(null); // To store fetched data
+  const [tableData, setTableData] = useState<any | null>(null);
   const [loading, setLoading] = useState<boolean>(true); // To show loading state
   const [error, setError] = useState<string | null>(null); // To store any error
 
@@ -57,14 +58,30 @@ export default function AdminDashboard() {
           throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
         const res = await response.json();
-        const result = res.slice(0, 6);
+        const result = res.slice(0, 10);
         console.log(result);
-        // retrieve name and coordinates of each provider
-        const providers = result.map((provider: any) => ({
+
+        let providers = [];
+        // iterate thru result and add to providers array if checked-in is open
+        for (let i = 0; i < result.length; i++) {
+          if (result[i]["checked-in"] == "open") {
+            providers.push({
+              name: result[i].name,
+              longitude: result[i].locationDetails.longitude,
+              latitude: result[i].locationDetails.latitude,
+            });
+          }
+        }
+
+        const providersForTable = result.map((provider: any) => ({
           name: provider.name,
-          longitude: provider.locationDetails.longitude,
-          latitude: provider.locationDetails.latitude,
+          phone: provider.phone,
+          email: provider.email,
+          checkedIn: provider["checked-in"],
         }));
+        console.log(providersForTable);
+        setTableData(providersForTable);
+        // for each provider in providersForTable, add to new array with name, longitude, latitude
 
         setData(providers); // Update state with fetched data
       } catch (err: any) {
@@ -76,6 +93,10 @@ export default function AdminDashboard() {
 
     fetchData();
   }, []);
+  const handleProviderClick = (name: any) => {
+    // find the provider with the name and pop up modal with case information
+    console.log(name);
+  };
   return (
     <div className="min-h-screen bg-background flex">
       {/* Sidebar */}
@@ -91,7 +112,8 @@ export default function AdminDashboard() {
         <nav className="space-y-2 p-4">
           <Button variant="ghost" className="w-full justify-start">
             <LayoutDashboard
-              className="mr-2 h-4 w-4 text-2xl font-semibold"
+              className="mr-2 h-4 w-4 text-l "
+              // className="mr-2 h-6 w-4 text-4xl font-bold k"
               style={{ color: "#5b91f5" }}
             />
             Dashboard
@@ -283,7 +305,7 @@ export default function AdminDashboard() {
                   className="text-2xl font-bold flex flex-col items-center text-center"
                   style={{ color: "#5b91f5" }}
                 >
-                  20 Providers On-Site
+                  5 Providers On-Site
                 </div>
                 <p className="text-xs text-muted-foreground ">
                   +5% from last month
@@ -347,49 +369,133 @@ export default function AdminDashboard() {
           </div>
           <Card className="col-span-2">
             <CardHeader>
-              <CardTitle style={{ color: "#5b91f5" }}>
-                Providers in the Field
-              </CardTitle>
+              <CardTitle style={{ color: "#5b91f5" }}>Providers</CardTitle>
               <CardDescription style={{ color: "#5b91f5" }}>
                 Breakdown of the Information:
               </CardDescription>
             </CardHeader>
             <CardContent>
               <ScrollArea className="h-[800px]">
-                <Table>
+                <Table className="w-full table-fixed text-sm border-collapse">
                   <TableHeader>
                     <TableRow>
                       <TableHead
-                        className="text-xs text-muted-foreground font-bold "
+                        className="text-lg text-muted-foreground font-bold"
                         style={{ color: "#5b91f5" }}
                       >
                         Name
                       </TableHead>
                       <TableHead
-                        className="text-xs text-muted-foreground font-bold"
+                        className="text-lg text-muted-foreground font-bold"
                         style={{ color: "#5b91f5" }}
                       >
-                        Phone
+                        Phone Number
                       </TableHead>
                       <TableHead
-                        className="text-xs text-muted-foreground font-bold"
+                        className="text-lg text-muted-foreground font-bold"
                         style={{ color: "#5b91f5" }}
                       >
-                        Case
+                        Email
+                      </TableHead>
+                      <TableHead
+                        className="text-lg text-muted-foreground font-bold"
+                        style={{ color: "#5b91f5" }}
+                      >
+                        Checked In
                       </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {[...Array(6)].map((_, i) => (
-                      <TableRow key={i}>
-                        <TableCell>Customer {i + 1}</TableCell>
-                        <TableCell>Product {i + 1}</TableCell>
-                        <TableCell>
-                          ${(Math.random() * 1000).toFixed(2)}
+                    {loading ? (
+                      <TableRow>
+                        <TableCell colSpan={4} className="text-center py-4">
+                          Loading...
                         </TableCell>
-                        <TableCell>{new Date().toLocaleDateString()}</TableCell>
                       </TableRow>
-                    ))}
+                    ) : error ? (
+                      <TableRow>
+                        <TableCell
+                          colSpan={4}
+                          className="text-center py-4 text-red-500"
+                        >
+                          Error: {error}
+                        </TableCell>
+                      </TableRow>
+                    ) : tableData && tableData.length > 0 ? (
+                      tableData.map(
+                        (provider: {
+                          id: React.Key | null | undefined;
+                          name:
+                            | string
+                            | number
+                            | bigint
+                            | boolean
+                            | React.ReactElement<
+                                any,
+                                string | React.JSXElementConstructor<any>
+                              >
+                            | Iterable<React.ReactNode>
+                            | React.ReactPortal
+                            | Promise<React.AwaitedReactNode>
+                            | null
+                            | undefined;
+                          phone:
+                            | string
+                            | number
+                            | bigint
+                            | boolean
+                            | React.ReactElement<
+                                any,
+                                string | React.JSXElementConstructor<any>
+                              >
+                            | Iterable<React.ReactNode>
+                            | React.ReactPortal
+                            | Promise<React.AwaitedReactNode>
+                            | null
+                            | undefined;
+                          email:
+                            | string
+                            | number
+                            | bigint
+                            | boolean
+                            | React.ReactElement<
+                                any,
+                                string | React.JSXElementConstructor<any>
+                              >
+                            | Iterable<React.ReactNode>
+                            | React.ReactPortal
+                            | Promise<React.AwaitedReactNode>
+                            | null
+                            | undefined;
+                          checkedIn: any;
+                        }) => (
+                          <TableRow
+                            key={provider.id}
+                            className="text-sm hover:bg-gray-200"
+                            onClick={() => handleProviderClick(provider.name)}
+                          >
+                            <TableCell className="px-4 py-1">
+                              {provider.name}
+                            </TableCell>
+                            <TableCell className="px-4 py-1">
+                              {provider.phone}
+                            </TableCell>
+                            <TableCell className="px-4 py-1">
+                              {provider.email}
+                            </TableCell>
+                            <TableCell className="px-4 py-1">
+                              {provider.checkedIn == "open" ? "Yes" : "No"}
+                            </TableCell>
+                          </TableRow>
+                        ),
+                      )
+                    ) : (
+                      <TableRow>
+                        <TableCell colSpan={4} className="text-center py-4">
+                          No data available.
+                        </TableCell>
+                      </TableRow>
+                    )}
                   </TableBody>
                 </Table>
 
