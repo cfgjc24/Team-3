@@ -41,7 +41,7 @@ const useGeolocation = () => {
       {
         enableHighAccuracy: true,
         maximumAge: 60,
-      },
+      }
     );
 
     return () => navigator.geolocation.clearWatch(watchID);
@@ -58,7 +58,7 @@ const useReverseGeocoding = (location: Location | null) => {
     if (!location) return;
 
     const fetchAddress = async () => {
-      const apiKey = process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY;
+      const apiKey = process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY; //from env local folder
       const url = `https://api.geoapify.com/v1/geocode/reverse?lat=${location.latitude}&lon=${location.longitude}&apiKey=${apiKey}`;
 
       try {
@@ -143,8 +143,15 @@ export default function LocationComponent({
             ) : (
               <AddressDisplay address={address} />
             )}
-            <MapComponent locations= {[{ name: "", longitude: location.longitude, latitude: location.latitude }]} />
-
+            <MapComponent
+              locations={[
+                {
+                  name: "",
+                  longitude: location.longitude,
+                  latitude: location.latitude,
+                },
+              ]}
+            />
           </>
         )}
       </CardContent>

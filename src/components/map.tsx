@@ -3,21 +3,23 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 interface Location {
+  //each induvidual part of the array has this with this data
   name: string;
   longitude: number;
   latitude: number;
 }
 
 interface MapComponentProps {
+  //makes up, contains the zoom amount, along with map style
   styleUrl?: string;
   locations: Location[];
   zoom?: number;
 }
 
 const MapComponent: React.FC<MapComponentProps> = ({
-  styleUrl = "https://api.maptiler.com/maps/basic-v2/style.json?key=***REMOVED***",
-  locations,
-  zoom = 10,
+  styleUrl = "https://api.maptiler.com/maps/basic-v2/style.json?key=***REMOVED***", //contacts the api
+  locations, //refers back to the locations array
+  zoom = 10, //how much to zoom in on the mid points between the two locations
 }) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const mapInstance = useRef<maplibregl.Map | null>(null);
@@ -25,10 +27,20 @@ const MapComponent: React.FC<MapComponentProps> = ({
   useEffect(() => {
     if (mapRef.current) {
       // Dynamically calculate center based on locations
-      const centerLng = locations.reduce((sum, loc) => sum + loc.longitude, 0) / locations.length;
-      const centerLat = locations.reduce((sum, loc) => sum + loc.latitude, 0) / locations.length;
+      const centerLng =
+        locations.reduce((sum, loc) => sum + loc.longitude, 0) /
+        locations.length;
+      const centerLat =
+        locations.reduce((sum, loc) => sum + loc.latitude, 0) /
+        locations.length;
 
       // Initialize the map
+      // mapInstance.current = new maplibregl.Map({
+      //   container: mapRef.current,
+      //   style: styleUrl,
+      //   center: [centerLng, centerLat], // Center on average location
+      //   zoom,
+
       mapInstance.current = new maplibregl.Map({
         container: mapRef.current,
         style: styleUrl,
@@ -46,7 +58,6 @@ const MapComponent: React.FC<MapComponentProps> = ({
             )
             .addTo(mapInstance.current!);
         });
-
       });
     }
 
