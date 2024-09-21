@@ -1,22 +1,20 @@
-const express = require('express');
-const prisma = require('./db'); // Import the Prisma client
+const express = require("express");
 const app = express();
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
-  });
-  
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
+});
 
 // Example route to create a user
-app.post('/user', async (req, res) => {
+app.post("/user", async (req, res) => {
   const { name, email } = req.body;
   try {
     const user = await prisma.user.create({
       data: {
         name,
-        email
+        email,
       },
     });
     res.json(user);
@@ -26,7 +24,7 @@ app.post('/user', async (req, res) => {
 });
 
 // Example route to get all users
-app.get('/users', async (req, res) => {
+app.get("/users", async (req, res) => {
   try {
     const users = await prisma.user.findMany();
     res.json(users);
