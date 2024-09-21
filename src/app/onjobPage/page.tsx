@@ -8,11 +8,24 @@ export default function Home() {
     console.log("Meeting recording started.");
   };
 
-  const handleEmergencyAlert = () => {
-    // Logic for sending an emergency alert
-    console.log("Emergency alert sent!");
+  const handleEmergencyAlert = async () => {
+    try {
+      // Make a GET request to the /api/email endpoint
+      const response = await fetch("http://localhost:3000/api/email", {
+        method: "GET",
+      });
+  
+      // Check if the response is okay
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Emergency alert sent successfully:", data);
+      } else {
+        console.error("Failed to send emergency alert:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error sending emergency alert:", error);
+    }
   };
-
   const handleEndSession = () => {
     // Logic for ending the session
     console.log("Session ended.");
