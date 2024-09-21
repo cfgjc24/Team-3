@@ -40,6 +40,20 @@ app.get("/cases/provider/:providerId", (req, res) => {
     }
   });
 
+  // Route to get all cases with status "OPEN" by provider ID
+app.get("/cases/open/provider/:providerId", (req, res) => {
+    const providerId = parseInt(req.params.providerId); // Get the provider ID from the request parameters
+    const openCases = caseData.filter(
+      (caseItem) => caseItem.providerId === providerId && caseItem.status === "OPEN"
+    ); // Filter cases by provider ID and status "OPEN"
+  
+    if (openCases.length > 0) {
+      res.json(openCases); // If open cases are found, return the list of open cases
+    } else {
+      res.status(404).json({ message: "No open cases found for this provider" }); // If no open cases are found, return a 404 error
+    }
+  });
+
   // Route to get all session notes
 app.get("/session_notes", (req, res) => {
     res.json(sessionNoteData);
