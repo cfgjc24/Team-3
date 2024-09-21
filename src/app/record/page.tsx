@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import {
@@ -6,6 +7,11 @@ import {
   LiveTranscriptionEvents,
   LiveClient,
 } from "@deepgram/sdk";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Mic, MicOff, FileText } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const deepgramApiKey = process.env.NEXT_PUBLIC_DEEPGRAM_API_KEY;
 const chatgptApiKey = process.env.NEXT_PUBLIC_CHATGPT_API_KEY;
@@ -14,7 +20,7 @@ export default function Home() {
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState("");
   const [summary, setSummary] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const deepgramLiveRef = useRef<LiveClient | null>(null);
 
@@ -69,12 +75,11 @@ export default function Home() {
 
       mediaRecorder.start(250);
       setIsRecording(true);
+      setError(null);
       console.log("Recording started.");
     } catch (error) {
       console.error("Error accessing microphone:", error);
-      setError(
-        "Error accessing microphone. Please check your permissions and try again.",
-      );
+      setError("Error accessing microphone. Please check your permissions and try again.");
     }
   };
 
@@ -123,60 +128,72 @@ export default function Home() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${chatgptApiKey}`,
           },
-        },
+        }
       );
 
       const summaryText = response.data.choices[0].message.content.trim();
       setSummary(summaryText);
-      setError("");
+      setError(null);
     } catch (error) {
       console.error("Error summarizing transcript:", error);
-      setError(
-        "Error generating summary. Please check your API key and try again.",
-      );
+      setError("Error generating summary. Please check your API key and try again.");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-      <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-4">
-          Real-time Audio Transcription
-        </h1>
-        <button
-          onClick={isRecording ? stopRecording : startRecording}
-          className={`w-full py-2 px-4 rounded-md text-white font-semibold ${
-            isRecording
-              ? "bg-red-500 hover:bg-red-600"
-              : "bg-blue-500 hover:bg-blue-600"
-          }`}
-        >
-          {isRecording ? "Stop Recording" : "Start Recording"}
-        </button>
-        {transcript && (
-          <div className="mt-4">
-            <h2 className="text-lg font-semibold mb-2">Transcript:</h2>
-            <p className="bg-gray-100 p-3 rounded-md">{transcript}</p>
-          </div>
-        )}
-        <button
-          onClick={summarizeTranscript}
-          className="w-full py-2 px-4 rounded-md text-white font-semibold bg-green-500 hover:bg-green-600 mt-4"
-        >
-          Summarize Transcript
-        </button>
-        {summary && (
-          <div className="mt-4">
-            <h2 className="text-lg font-semibold mb-2">Summary:</h2>
-            <p className="bg-gray-100 p-3 rounded-md">{summary}</p>
-          </div>
-        )}
-        {error && (
-          <div className="mt-4 text-red-500">
-            <p>{error}</p>
-          </div>
-        )}
-      </div>
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <Card className="w-full max-w-lg">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold">
+            Real-time Audio Transcription
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <Button
+            onClick={isRecording ? stopRecording : startRecording}
+            className="w-full"
+            variant={isRecording ? "destructive" : "default"}
+          >
+            {isRecording ? (
+              <>
+                <MicOff className="mr-2 h-4 w-4" /> Stop Recording
+              </>
+            ) : (
+              <>
+                <Mic className="mr-2 h-4 w-4" /> Start Recording
+              </>
+            )}
+          </Button>
+          {transcript && (
+            <div>
+              <h2 className="text-lg font-semibold mb-2">Transcript:</h2>
+              <ScrollArea className="h-[200px] w-full rounded-md border p-4">
+                {transcript}
+              </ScrollArea>
+            </div>
+          )}
+          <Button
+            onClick={summarizeTranscript}
+            className="w-full"
+            variant="secondary"
+          >
+            <FileText className="mr-2 h-4 w-4" /> Summarize Transcript
+          </Button>
+          {summary && (
+            <div>
+              <h2 className="text-lg font-semibold mb-2">Summary:</h2>
+              <ScrollArea className="h-[100px] w-full rounded-md border p-4">
+                {summary}
+              </ScrollArea>
+            </div>
+          )}
+          {error && (
+            <Alert variant="destructive">
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }
