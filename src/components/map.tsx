@@ -17,7 +17,7 @@ interface MapComponentProps {
 }
 
 const MapComponent: React.FC<MapComponentProps> = ({
-  styleUrl = "https://api.maptiler.com/maps/basic-v2/style.json?key=***REMOVED***",
+  styleUrl = "https://api.maptiler.com/maps/basic-v2/style.json?key=",
   locations,
   zoom = 7,
 }) => {
